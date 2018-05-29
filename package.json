@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/christine-aqui/Voluntour#readme",
   "dependencies": {
+    "bulma": "^0.7.1",
     "live-server": "^1.2.0"
   }
 }

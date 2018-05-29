@@ -7,8 +7,6 @@ console.log('connected');
 var key = '5511ae6b581be2e6b0625f298b7d62ae';
 var destination = 'toronto';
 var destCode = 'CA';
-// cnt number of days returned (from 1 to 16)
-
 var unit = 'metric';
 var queryURL= `https://api.openweathermap.org/data/2.5/forecast?q=${destination},${destCode}&cnt=10&units=${unit}&appid=${key}`;
 // docs  https://openweathermap.org/forecast16
