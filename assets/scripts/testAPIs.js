@@ -15,7 +15,7 @@ $(document).ready(function () {
     method: "GET"
   }).done(function (response) {
     // console.log('URL: ',queryURL);
-    // console.log(response);
+    console.log('Open weather: ',response);
     // console.log('city name: ' , response.city.name);
     // console.log('country code: ', response.city.country);
     // console.log('city day index 0: ', response.list[0].main.temp +'°C');
@@ -33,7 +33,7 @@ $(document).ready(function () {
     // method: "GET"
   }).done(function (response) {
     // console.log('URL: ', newURL);
-    // console.log('responce: ',response);
+    console.log('News responce: ',response);
     // console.log('author: ',response.articles[0].author);
     // console.log('title: ',response.articles[0].title);
     // console.log('description: ',response.articles[0].description);
@@ -57,7 +57,7 @@ $(document).ready(function () {
   }).done(function (response) {
     // console.log(tugoURL);
     if (response) {
-      // console.log('Tugo ', response);
+      console.log('Tugo response: ', response);
       // console.log('Tugo advisories ', response.advisories);
       // console.log('Tugo advisories ', response.advisories.description);
       // console.log('Tugo ', response.climate);
@@ -72,7 +72,8 @@ $(document).ready(function () {
   // ____
   //
   //ticketmaster API
-  tmURL = ``;
+  // https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
+  // tmURL = `https://app.ticketmaster.com/discovery/v2/events`;
   $.ajax({
     url: "https://app.ticketmaster.com/discovery/v2/events",
     dataType: "json",
@@ -86,6 +87,6 @@ $(document).ready(function () {
       // endDateTime: `${userEndDate}T23:30:00Z`
     }
   }).done(function (response) {
-    console.log(response);
+    console.log('Ticketmaster response: ', response);
   });
 });
