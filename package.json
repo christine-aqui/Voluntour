@@ -8,15 +8,27 @@
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "git+https://github.com/shrekstah/Voluntour.git"
+=======
+    "url": "git+https://github.com/christine-aqui/Voluntour.git"
+>>>>>>> bc6176c5bab4c1d2a14c2237eac4d1692551dab5
   },
   "author": "",
   "license": "ISC",
   "bugs": {
+<<<<<<< HEAD
     "url": "https://github.com/shrekstah/Voluntour/issues"
   },
   "homepage": "https://github.com/shrekstah/Voluntour#readme",
   "dependencies": {
+=======
+    "url": "https://github.com/christine-aqui/Voluntour/issues"
+  },
+  "homepage": "https://github.com/christine-aqui/Voluntour#readme",
+  "dependencies": {
+    "bulma": "^0.7.1",
+>>>>>>> bc6176c5bab4c1d2a14c2237eac4d1692551dab5
     "live-server": "^1.2.0"
   }
 }

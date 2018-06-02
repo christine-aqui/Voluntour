@@ -1,4 +1,11 @@
-html,
-body {
-  font-size: 16px;
+video {
+  height: 100vh;
+  widows: 100vh;
+  position: absolute;
+  overflow: hidden;
+  z-index: -1000;
+}
+
+#form-control {
+  display: inline;
 }

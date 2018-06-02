@@ -5,12 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <!-- Google font -->
-  <link rel="stylesheet" href="#">
+  <!--  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- reset the webpage -->
   <link rel="stylesheet" href="./assets/styles/reset.css">
+  <!-- Bulma -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <!-- Google font -->
+  <link rel="stylesheet" href="#">
   <!-- main style sheet -->
   <link rel="stylesheet" href="./assets/styles/style.css">
   <!-- Animation -->
@@ -18,27 +22,77 @@
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 
-  <title>Title</title>
+  <title>Voluntour - </title>
 </head>
 
 <body>
+  <div class="fullscreen-bg">
+    <video autoplay loop muted id="main-video">
+      <source src="videos/main-video.mp4" type="video/mp4">
+    </video>
+  </div>
 
+  <section class="hero is-fullheight">
+    <div id="landing-page" class="hero-body">
+      <div class="container">
+        <div id="logo">
+          <img src="images/Logo_Tribal.PNG" alt="logo">
+        </div>
+        <h3 class="title is-2" id="highlight"><span>Tour the world. Make it a better place!</span></h3>
+        <form id="main-form" class="field">
+          <div class="control has-icons-left" id="form-control">
+            <div class="select is-large">
+              <select name="region-choice" id="region-list">
+                <option value="Country" selected>Country</option>
+                <option value="Asia">Asia</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Fiji">Fiji</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="India">India</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Malawi">Malawi</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Peru">Peru</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Thailand">Thailand</option>
+              </select>
+              <button class="button is-large is-rounded is-warning is-hovered" id="form-control">Let's Go!</button>
+            </div>
+            <div class="icon is-large is-left">
+              <i class="fas fa-globe"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
+  <div id="return-trips">
 
+  </div>
+  <div id="travel-alert">
 
+  </div>
+  <div id="weather-info">
 
+  </div>
+  <div id="map">
 
+  </div>
+  <div id="meetup-events">
 
+  </div>
 
-
-  <!-- script -->
-
-  <!-- Bootstrap cnd -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+  <!-- Popper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="./assets/scripts/script.js">
-  </script>
+  <!-- Our scripts -->
+  <script src="./assets/scripts/script.js"></script>
+  <!-- christine testing file -->
+  <script src="./assets/scripts/testAPIs.js"></script>
+
 </body>
 
 </html>
