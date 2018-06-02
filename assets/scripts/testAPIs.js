@@ -15,7 +15,7 @@ $(document).ready(function () {
     method: "GET"
   }).done(function (response) {
     // console.log('URL: ',queryURL);
-    // console.log('Open weather: ', response);
+    console.log('Open weather: ', response);
     // console.log('city name: ' , response.city.name);
     // console.log('country code: ', response.city.country);
     // console.log('city day index 0: ', response.list[0].main.temp +'°C');
@@ -32,7 +32,7 @@ $(document).ready(function () {
     url: newURL,
     method: "GET"
   }).done(function (response) {
-    // console.log('URL: ', newURL);
+    console.log('URL: ', newURL);
     // console.log('News responce: ', response);
     // console.log('author: ',response.articles[0].author);
     // console.log('title: ',response.articles[0].title);
@@ -46,7 +46,7 @@ $(document).ready(function () {
   // testing Travel Advisory API
   //  doc http://developer.tugo.com/docs
   //  http://developer.tugo.com/docs/travelsafe/v1/country
-  destCode = 'GR'; //hard coded
+  // destCode = 'GR'; //hard coded
   var tugoURL = `https://api.tugo.com/v1/travelsafe/countries/${destCode}`;
   $.ajax({
     url: tugoURL,
@@ -57,17 +57,16 @@ $(document).ready(function () {
   }).done(function (response) {
     // console.log(tugoURL);
     if (response) {
-      // console.log('Tugo response: ', response);
+      console.log('Tugo response: ', response);
       // console.log('Tugo advisories ', response.advisories);
       // console.log('Tugo advisories ', response.advisories.description);
       // console.log('Tugo ', response.climate);
       // console.log('Tugo advisoryText ', response.advisoryText);
       // console.log('Tugo regionalAdvisory ', response.regionalAdvisory);
+    } else{
+      console.log('');
     }
   });
-  // $.get(`https://api.tugo.com/v1/travelsafe/countries/GR`, function(data, status){
-  //   console.log(data);
-  // })
   //
   // ____
   //
@@ -92,18 +91,20 @@ $(document).ready(function () {
   //
   // testing Meetup
   var meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
+  // https://www.meetup.com/meetup_api/docs/2/open_events/
   $.ajax({
     url: meetupURL,
     method: 'GET',
     data: {
       key: '116b73e106c122e802f104e7767213',
-      city: 'toronto',
+      city: destination,
       country: 'CA',
       category: 1,
       sign: 'true',
-      page: '20'
+      // page: '10'
     }
   }).done(function (responce) {
+    console.log(meetupURL);
     console.log('meetup ', responce);
   });
 
