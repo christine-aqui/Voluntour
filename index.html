@@ -12,7 +12,8 @@
   <!-- Bulma -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
   <!--Font Awesome-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
   <!-- Google font -->
   <link rel="stylesheet" href="#">
   <!-- main style sheet -->
@@ -28,7 +29,7 @@
 <body>
   <div class="fullscreen-bg">
     <video autoplay loop muted id="main-video">
-      <source src="videos/main-video.mp4" type="video/mp4">
+      <source src="./assets/videos/main-video.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -36,9 +37,11 @@
     <div id="landing-page" class="hero-body">
       <div class="container">
         <div id="logo">
-          <img src="images/Logo_Tribal.PNG" alt="logo">
+          <img src="./assets/images/Logo_Tribal.PNG" alt="logo" class="">
         </div>
-        <h3 class="title is-2" id="highlight"><span>Tour the world. Make it a better place!</span></h3>
+        <h3 class="title is-2" id="highlight">
+          <span>Tour the world. Make it a better place!</span>
+        </h3>
         <form id="main-form" class="field">
           <div class="control has-icons-left" id="form-control">
             <div class="select is-large">
@@ -59,7 +62,7 @@
                 <option value="Senegal">Senegal</option>
                 <option value="Thailand">Thailand</option>
               </select>
-              <button class="button is-large is-rounded is-warning is-hovered" id="form-control">Let's Go!</button>
+              <button class="button is-large is-rounded is-warning is-hovered" id="form-control formBtn">Let's Go!</button>
             </div>
             <div class="icon is-large is-left">
               <i class="fas fa-globe"></i>
@@ -70,19 +73,28 @@
     </div>
   </section>
 
-  <div id="return-trips">
-
+  <div id="return-trips" class="Boxed">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam beatae unde quos iure culpa, sint, dicta voluptatem consequatur
+    quasi non, maxime tenetur? Ipsa voluptatibus aliquam eaque, reprehenderit odio error ipsum.
   </div>
-  <div id="travel-alert">
-
+  <!--  -->
+  <div id="travel-alert" class="Boxed">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam doloribus sed molestias dolorem obcaecati nulla. Ratione
+    non amet neque, exercitationem ut minus quisquam, quam sit nemo tenetur cupiditate sint atque.
   </div>
-  <div id="weather-info">
-
+  <!--  -->
+  <div id="weather-info" class="Boxed">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, praesentium voluptate. Molestias laboriosam ipsa iure nemo
+    eius quidem hic placeat ex iusto aut reiciendis a, consequatur quae, molestiae quas nesciunt?
   </div>
-  <div id="map">
-
+  <!--  -->
+  <div id="map" class="Boxed">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, quaerat similique. Voluptatum ipsum inventore consequuntur
+    fugit ratione nesciunt quae soluta praesentium. Illum dolor cumque deleniti neque similique ad maxime eum.
   </div>
-  <div id="meetup-events">
+  <!--  -->
+  <div id="meetup-events" class="Boxed">
+    <!--  -->
 
   </div>
 
@@ -91,7 +103,7 @@
   <!-- Our scripts -->
   <script src="./assets/scripts/script.js"></script>
   <!-- christine testing file -->
-  <script src="./assets/scripts/testAPIs.js"></script>
+  <!-- <script src="./assets/scripts/testAPIs.js"></script> -->
 
 </body>
 
