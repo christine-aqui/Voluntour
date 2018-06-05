@@ -1,38 +1,18 @@
-.fullscreen-bg {
+.jumbotron {
+  position: relative;
+  z-index: -99;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+#main-video {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: hidden;
+  overflow: visible;
   z-index: -100;
+  width: 100vw;
+  height: 100vh;
 }
-
-.fullscreen-bg__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.Boxed {
-  /* help to see contents outline */
-  /* border: 3px solid green; */
-  padding: 20px;
-  margin: 15px;
-}
-
-/* @media (min-aspect-ratio: 16/9) {
-  .fullscreen-bg__video {
-    height: 300%;
-    top: -100%;
-  }
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .fullscreen-bg__video {
-    width: 300%;
-    left: -100%;
-  }
-} */
