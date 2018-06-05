@@ -16,7 +16,14 @@
   height: 100%;
 }
 
-@media (min-aspect-ratio: 16/9) {
+.Boxed {
+  /* help to see contents outline */
+  /* border: 3px solid green; */
+  padding: 20px;
+  margin: 15px;
+}
+
+/* @media (min-aspect-ratio: 16/9) {
   .fullscreen-bg__video {
     height: 300%;
     top: -100%;
@@ -28,4 +35,4 @@
     width: 300%;
     left: -100%;
   }
-}
+} */
