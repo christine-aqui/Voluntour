@@ -12,7 +12,10 @@ $(document).ready(function () {
   }, 500);
 });
 // Meetup API
-// var elem = document.querySelector('#region-list');
-// var userRegion = elem.options[elem.selectedIndex].value;
-// var userRegion = $('#region-list option:selected').text();
-// console.log('User selected: ',userRegion);
+// using the windows object location method
+var urlParms = new URLSearchParams(window.location.search);
+// using the URLSearchParams utility method
+// URLSearchParams.get() Returns the first value associated to the given search parameter.
+var regChoi = urlParms.get('region-choice');
+// consol log what you got
+console.log('User selected: ',regChoi);
