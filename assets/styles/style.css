@@ -1,18 +1,40 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .jumbotron {
+  width: 100vw;
+  height: 100vh;
   position: relative;
-  z-index: -99;
-  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+  background-color: transparent;
+  margin: 0;
+}
+
+.landing-page--content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #main-video {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: visible;
   z-index: -100;
-  width: 100vw;
-  height: 100vh;
+  min-width: 100%; 
+  min-height: 100%; 
+  width: auto;
+  height: auto;
+}
+
+#return-trips {
+  display: none;
 }
