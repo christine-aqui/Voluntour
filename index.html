@@ -9,8 +9,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- reset the webpage -->
   <link rel="stylesheet" href="./assets/styles/reset.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <!-- Bulma -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"> -->
   <!--Font Awesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
@@ -27,82 +29,89 @@
 </head>
 
 <body>
-  <div class="fullscreen-bg">
+  <div class="jumbotron">
     <video autoplay loop muted id="main-video">
-      <source src="./assets/videos/main-video.mp4" type="video/mp4">
+      <source src="assets/videos/main-video.mp4" type="video/mp4">
     </video>
+    <section class="landing-page--content">
+      <div id="landing-page" class="hero-body">
+        <div class="container">
+          <div id="logo">
+            <img src="./assets/images/Logo_Tribal.PNG" alt="logo" class="">
+          </div>
+          <h3 class="title is-2" id="highlight">
+            <span>Tour the world. Make it a better place!</span>
+          </h3>
+          <form id="main-form" class="field">
+            <div class="control has-icons-left" id="form-control">
+              <div class="select is-large">
+                <select name="region-choice" id="region-list">
+                  <option value="Country" selected>Country</option>
+                  <option value="Asia">Asia</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Fiji">Fiji</option>
+                  <option value="Hawaii">Hawaii</option>
+                  <option value="India">India</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Malawi">Malawi</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="Peru">Peru</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Senegal">Senegal</option>
+                  <option value="Thailand">Thailand</option>
+                </select>
+                <button class="button is-large is-rounded is-warning is-hovered" id="formBtn">Let's Go!</button>
+              </div>
+              <div class="icon is-large is-left">
+                <i class="fas fa-globe"></i>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <section class="hero is-fullheight">
-    <div id="landing-page" class="hero-body">
-      <div class="container">
-        <div id="logo">
-          <img src="./assets/images/Logo_Tribal.PNG" alt="logo" class="">
-        </div>
-        <h3 class="title is-2" id="highlight">
-          <span>Tour the world. Make it a better place!</span>
-        </h3>
-        <form id="main-form" class="field">
-          <div class="control has-icons-left" id="form-control">
-            <div class="select is-large">
-              <select name="region-choice" id="region-list">
-                <option value="Country" selected>Country</option>
-                <option value="Asia">Asia</option>
-                <option value="Cambodia">Cambodia</option>
-                <option value="Ecuador">Ecuador</option>
-                <option value="Fiji">Fiji</option>
-                <option value="Hawaii">Hawaii</option>
-                <option value="India">India</option>
-                <option value="Jordan">Jordan</option>
-                <option value="Kenya">Kenya</option>
-                <option value="Malawi">Malawi</option>
-                <option value="Nepal">Nepal</option>
-                <option value="Peru">Peru</option>
-                <option value="Philippines">Philippines</option>
-                <option value="Senegal">Senegal</option>
-                <option value="Thailand">Thailand</option>
-              </select>
-              <button class="button is-large is-rounded is-warning is-hovered" id="form-control formBtn">Let's Go!</button>
-            </div>
-            <div class="icon is-large is-left">
-              <i class="fas fa-globe"></i>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+  
 
   <div id="return-trips" class="Boxed">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam beatae unde quos iure culpa, sint, dicta voluptatem consequatur
-    quasi non, maxime tenetur? Ipsa voluptatibus aliquam eaque, reprehenderit odio error ipsum.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi itaque deserunt ipsum, voluptatibus facere consequatur sequi odit laudantium corporis autem nemo perspiciatis, at explicabo tenetur libero ullam veritatis amet vero.
+
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ullam vitae temporibus magni? Recusandae modi expedita repellat ea sapiente magni consequuntur, explicabo inventore reiciendis veniam quisquam, architecto, illum necessitatibus! Dolorem!
+
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem iure tempore ab autem neque! Ducimus, beatae nemo dolorum cum corporis in explicabo cumque id, nulla rerum voluptates sint veritatis aliquam!
+
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident facere excepturi a facilis quia, voluptates quibusdam iure, necessitatibus repudiandae corrupti vitae est id pariatur, ex atque recusandae. Sit, et doloremque.
   </div>
   <!--  -->
   <div id="travel-alert" class="Boxed">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam doloribus sed molestias dolorem obcaecati nulla. Ratione
-    non amet neque, exercitationem ut minus quisquam, quam sit nemo tenetur cupiditate sint atque.
+
   </div>
   <!--  -->
   <div id="weather-info" class="Boxed">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, praesentium voluptate. Molestias laboriosam ipsa iure nemo
-    eius quidem hic placeat ex iusto aut reiciendis a, consequatur quae, molestiae quas nesciunt?
+    
   </div>
   <!--  -->
   <div id="map" class="Boxed">
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, quaerat similique. Voluptatum ipsum inventore consequuntur
-    fugit ratione nesciunt quae soluta praesentium. Illum dolor cumque deleniti neque similique ad maxime eum.
+   
   </div>
   <!--  -->
   <div id="meetup-events" class="Boxed">
     <!--  -->
 
   </div>
-
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   <!-- Popper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
   <!-- Our scripts -->
   <script src="./assets/scripts/script.js"></script>
   <!-- christine testing file -->
+
+
+
   <!-- <script src="./assets/scripts/testAPIs.js"></script> -->
 
 </body>
