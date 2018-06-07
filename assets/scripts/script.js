@@ -10,6 +10,13 @@ $('.container').hide();
 $(document).ready(function () {
   console.log("document ready!");
   //
+  function cityInfo(obj) {
+    capCity = obj.capitalCity;
+    cityCode = obj.countryCode2;
+    cityLat = obj.lat;
+    cityLon = obj.lon;
+    return capCity , cityCode, cityLat, cityLon;
+  }
   setTimeout(function () {
     $('#logo').show();
     $('#logo').addClass('animated fadeIn');
@@ -24,67 +31,80 @@ $(document).ready(function () {
         console.log('user selected: ', userSelected);
         switch (userSelected) {
           case "Malawi":
-            capCity = Malawi.capitalCity;
+          cityInfo(Malawi);
             console.log('City name: ', capCity);
             break;
             //
           case "Jordan":
-            console.log('City name: ', Jordan.capitalCity);
+            cityInfo(Jordan);
+            console.log('City name: ', capCity);
             break;
             //
           case "Nepal":
-            console.log('City name: ', Nepal.capitalCity);
+            cityInfo(Nepal);
+            console.log('City name: ', capCity);
             break;
             //
           case "Fiji":
-            console.log('City name: ', Fiji.capitalCity);
+            cityInfo(Fiji);
+            console.log('City name: ', capCity);
             break;
             //
           case "Hawaii":
-            console.log('City name: ', Hawaii.capitalCity);
+            cityInfo(Hawaii);
+            console.log('City name: ', capCity);
             break;
             //
           case "Peru":
-            console.log('City name: ', Peru.capitalCity);
+            cityInfo(Peru);
+            console.log('City name: ', capCity);
             break;
             //
           case "Cambodia":
-            console.log('City name: ', Cambodia.capitalCity);
+            cityInfo(Cambodia);
+            console.log('City name: ', capCity);
             break;
             //
           case "India":
-            console.log('City name: ', India.capitalCity);
+            cityInfo(India);
+            console.log('City name: ', capCity);
             break;
             //
           case "Thailand":
-            console.log('City name: ', Thailand.capitalCity);
+            cityInfo(Thailand);
+            console.log('City name: ', capCity);
             break;
             //
           case "Ecuador":
-            console.log('City name: ', Ecuador.capitalCity);
+            cityInfo(Ecuador);
+            console.log('City name: ', capCity);
             break;
             //
           case "Kenya":
-            console.log('City name: ', Kenya.capitalCity);
+            cityInfo(Kenya);
+            console.log('City name: ', capCity);
             break;
             //
           case "Senegal":
-            console.log('City name: ', Senegal.capitalCity);
+            cityInfo(Senegal);
+            console.log('City name: ', capCity);
             break;
             //
           case "Philippines":
-            console.log('City name: ', Philippines.capitalCity);
+            cityInfo(Philippines);
+            console.log('City name: ', capCity);
             break;
             //
         }
         //
         var meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
+
         $.ajax({
           url: meetupURL,
           method: 'GET',
           data: {
             key: '116b73e106c122e802f104e7767213',
-            city: 'Toronto',
+            city: capCity,
             country: 'CA',
             category: 1, //hard coded temp
             sign: 'true',
@@ -96,6 +116,12 @@ $(document).ready(function () {
     }, 400);
   }, 500);
 });
+
+
+
+
+
+
 
 // Meetup API
 // $("#formBtn").on('click', function(e) {

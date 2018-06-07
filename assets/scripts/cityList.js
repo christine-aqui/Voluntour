@@ -1,7 +1,7 @@
 const Asia = {
   capitalCity: 'Lilongwe',
-  countryCode1:'MW',
-  countryCode2:'MWI',
+  countryCode1: 'MW',
+  countryCode2: 'MWI',
   Continent: 'Asia',
   lat: -13.9669200,
   lon: 33.7872500,
@@ -9,8 +9,8 @@ const Asia = {
 
 const Malawi = {
   capitalCity: 'Lilongwe',
-  countryCode1:'MW',
-  countryCode2:'MWI',
+  countryCode1: 'MW',
+  countryCode2: 'MWI',
   Continent: 'Africa',
   lat: -13.9669200,
   lon: 33.7872500,
@@ -53,7 +53,7 @@ const Peru = {
   countryCode1: 'PE',
   countryCode2: 'PER',
   Continent: 'South America',
-  lat:-12.0431800,
+  lat: -12.0431800,
   lon: -77.0282400,
 }
 const Cambodia = {
@@ -85,8 +85,8 @@ const Ecuador = {
   countryCode1: 'EC',
   countryCode2: 'ECU',
   Continent: 'South America',
-  lat: -0.2298500 ,
-  lon: -78.5249500 ,
+  lat: -0.2298500,
+  lon: -78.5249500,
 }
 const Kenya = {
   capitalCity: 'Nairobi',
@@ -94,15 +94,15 @@ const Kenya = {
   countryCode2: 'KEN',
   Continent: 'Africa',
   lat: -1.2833300,
-  lon: 36.8166700 ,
+  lon: 36.8166700,
 }
 const Senegal = {
   capitalCity: 'Dakar',
   countryCode1: 'SN',
   countryCode2: 'SEN',
   Continent: 'Africa',
-  lat: 14.6937000 ,
-  lon: -17.4440600 ,
+  lat: 14.6937000,
+  lon: -17.4440600,
 }
 const Philippines = {
   capitalCity: 'Manila',
@@ -112,3 +112,4 @@ const Philippines = {
   lat: 14.6042000,
   lon: 120.9822000,
 }
+
