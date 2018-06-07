@@ -1,11 +1,11 @@
-const Asia = {
-  capitalCity: 'Lilongwe',
-  countryCode1: 'MW',
-  countryCode2: 'MWI',
-  Continent: 'Asia',
-  lat: -13.9669200,
-  lon: 33.7872500,
-}
+// const Asia = {
+//   capitalCity: 'Lilongwe',
+//   countryCode1: 'MW',
+//   countryCode2: 'MWI',
+//   Continent: 'Asia',
+//   lat: -13.9669200,
+//   lon: 33.7872500,
+// }
 
 const Malawi = {
   capitalCity: 'Lilongwe',
