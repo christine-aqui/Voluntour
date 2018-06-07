@@ -6,7 +6,7 @@ $(document).ready(function () {
   // Open Weather key = 5511ae6b581be2e6b0625f298b7d62ae
   var key = '5511ae6b581be2e6b0625f298b7d62ae';
   var destination = 'toronto';
-  var destCode = 'CA';
+  var destCode = 'GR';
   var unit = 'metric';
   var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${destination},${destCode}&cnt=10&units=${unit}&appid=${key}`;
   // docs  https://openweathermap.org/forecast16
@@ -15,7 +15,7 @@ $(document).ready(function () {
     method: "GET"
   }).done(function (response) {
     // console.log('URL: ',queryURL);
-    console.log('Open weather: ', response);
+    // console.log('Open weather: ', response);
     // console.log('city name: ' , response.city.name);
     // console.log('country code: ', response.city.country);
     // console.log('city day index 0: ', response.list[0].main.temp +'°C');
@@ -32,7 +32,7 @@ $(document).ready(function () {
     url: newURL,
     method: "GET"
   }).done(function (response) {
-    console.log('URL: ', newURL);
+    // console.log('URL: ', newURL);
     // console.log('News responce: ', response);
     // console.log('author: ',response.articles[0].author);
     // console.log('title: ',response.articles[0].title);
@@ -58,11 +58,11 @@ $(document).ready(function () {
     // console.log(tugoURL);
     if (response) {
       console.log('Tugo response: ', response);
-      // console.log('Tugo advisories ', response.advisories);
-      // console.log('Tugo advisories ', response.advisories.description);
-      // console.log('Tugo ', response.climate);
-      // console.log('Tugo advisoryText ', response.advisoryText);
-      // console.log('Tugo regionalAdvisory ', response.regionalAdvisory);
+      console.log('Tugo advisories ', response.advisories);
+      console.log('Tugo advisories ', response.advisories.description);
+      console.log('Tugo ', response.climate);
+      console.log('Tugo advisoryText ', response.advisoryText);
+      console.log('Tugo regionalAdvisory ', response.regionalAdvisory);
     } else{
       console.log('');
     }
@@ -104,8 +104,8 @@ $(document).ready(function () {
       // page: '10'
     }
   }).done(function (responce) {
-    console.log(meetupURL);
-    console.log('meetup ', responce);
+    // console.log(meetupURL);
+    // console.log('meetup ', responce);
   });
 
 

@@ -10,7 +10,7 @@ $(document).ready(function () {
       $('.container').show();
       document.querySelector('#formBtn').addEventListener('click', function(e) {
         e.preventDefault();
-        
+
         var meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
         $.ajax({
           url: meetupURL,
