@@ -32,7 +32,7 @@ $(document).ready(function () {
     url: newURL,
     method: "GET"
   }).done(function (response) {
-    // console.log('URL: ', newURL);
+    console.log('URL: ', newURL);
     // console.log('News responce: ', response);
     // console.log('author: ',response.articles[0].author);
     // console.log('title: ',response.articles[0].title);
@@ -57,12 +57,12 @@ $(document).ready(function () {
   }).done(function (response) {
     // console.log(tugoURL);
     if (response) {
-      console.log('Tugo response: ', response);
-      console.log('Tugo advisories ', response.advisories);
-      console.log('Tugo advisories ', response.advisories.description);
-      console.log('Tugo ', response.climate);
-      console.log('Tugo advisoryText ', response.advisoryText);
-      console.log('Tugo regionalAdvisory ', response.regionalAdvisory);
+      // console.log('Tugo response: ', response);
+      // console.log('Tugo advisories ', response.advisories);
+      // console.log('Tugo advisories ', response.advisories.description);
+      // console.log('Tugo ', response.climate);
+      // console.log('Tugo advisoryText ', response.advisoryText);
+      // console.log('Tugo regionalAdvisory ', response.regionalAdvisory);
     } else{
       console.log('');
     }

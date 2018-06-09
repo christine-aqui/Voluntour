@@ -18,15 +18,15 @@ $(document).ready(function () {
     cityLat = obj.lat;
     cityLon = obj.lon;
     // if(obj === 'Hawaii'){
-      cityStae = obj.state;
+    cityStae = obj.state;
     // }
-    return capCity , cityCode, cityLat, cityLon, cityStae;
+    return capCity, cityCode, cityLat, cityLon, cityStae;
   }
   setTimeout(function () { // logo is loaded
     $('#logo').show();
     $('#logo').addClass('animated fadeIn');
     //
-    setTimeout(() => {// start code
+    setTimeout(() => { // start code
       $('.container').show();
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
@@ -36,7 +36,7 @@ $(document).ready(function () {
         console.log('user selected: ', userSelected);
         switch (userSelected) {
           case "Malawi":
-          cityInfo(malawi);
+            cityInfo(malawi);
             console.log('City name: ', capCity);
             break;
             //
@@ -101,8 +101,8 @@ $(document).ready(function () {
             break;
             //
         }
-        //
-        if(userSelected != "Country"){
+        // checks to see if country is selected. if no country is selected then do notting
+        if (userSelected != "Country") {
           // Ajax start here
           let meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
           $.ajax({
@@ -120,15 +120,36 @@ $(document).ready(function () {
           }).done(function (response) {
             // takes response string and converts it to a JavaScript object
             let myResp = JSON.parse(response);
-            console.log('meetup: ', myResp);
+            let meetUpResults = myResp.results;
+            if (myResp.results.length != 0) {
+              console.log('meetup: ', meetUpResults);
+              let newDiv = "<div class='meetup-event'></div>";
+              let newP = '<p>';
+              let newH3 = '<h3>';
+              let newImg = `<img src="${meetupImage}" alt="">`;
+              for (let result of meetUpResults) {
+                let meetupImage = meetUpResults[result].photo_url;
+                console.log(result.name);
+                $('#meetup-events').append(newDiv);
+                // $('.meetup-event').append(newImg);
 
+              }
+            } else {
+              console.log("no events");
+            }
+            // Pushing the html
+            // I want the results[i].name
+            // results[i].photo_url
+            // results[i].status
+            // results[i].description
+            // results[i].event_url
 
-          // }
           });
-        } else{
+        } else {
           console.log("notting");
         }
       });
+
     }, 400);
   }, 500);
 
