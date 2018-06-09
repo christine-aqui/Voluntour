@@ -5,15 +5,15 @@ let cityStae = '';
 let cityLat = 0;
 let cityLon = 0;
 let userSelected = '';
-let meetupHTML = `<div class="meetup_event">
+let meetupHTML = `<div class="meetup_event hvr-rectangle-out hvr-box-shadow-outset">
                     <div class="group1">
                       <img class="meetup_image" src="" alt="">
-                      <h4 class="meetup_name"></h4>
+                      <h5 class="meetup_name"></h5>
                     </div>
-                    <div>
+                    <div class="group2">
                       <div class="meetup_desciption"></div>
                       <div class=" subgroup">
-                        <h5 class="meetup_status"></h5>
+                        <h6 class="meetup_status"></h6>
                         <a class="meetup_link" href="#"target="_blank">More Infor</a>
                       </div>
                     </div>
@@ -55,7 +55,7 @@ $(document).ready(function () {
         //
         userSelected = $('#region-list').val();
         console.log('user selected: ', userSelected);
-
+        $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
         switch (userSelected) {
           case "Malawi":
             cityInfo(malawi);
@@ -148,12 +148,13 @@ $(document).ready(function () {
               for (let result of meetUpResults) {
                 // let meetupImage = meetUpResults[result].photo_url;
                 // console.log(result.name);
+                let eventStatus = `Status: ${result.status}`;
                 $('#meetup-events').append(meetupHTML);
                 $('.meetup_image').attr("src", result.photo_url);
                 $('.meetup_image').attr("alt", "event image");
                 $('.meetup_name').text(result.name);
                 $('.meetup_desciption').html(result.description);
-                $('.meetup_status').text(result.status);
+                $('.meetup_status').text(eventStatus);
                 $('.meetup_link').attr('href', result.event_url);
 
                 // let meetup_image = "";
