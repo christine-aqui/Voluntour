@@ -1,117 +1,133 @@
 console.log('connected');
-var capCity = '';
-var cityCode = '';
-var cityLat = 0;
-var cityLon = 0;
+let capCity = '';
+let cityCode = '';
+let cityStae = '';
+let cityLat = 0;
+let cityLon = 0;
 //
 //
 $('#logo').hide();
 $('.container').hide();
+
 $(document).ready(function () {
   console.log("document ready!");
   //
   function cityInfo(obj) {
     capCity = obj.capitalCity;
-    cityCode = obj.countryCode2;
+    cityCode = obj.countryCode1;
     cityLat = obj.lat;
     cityLon = obj.lon;
-    return capCity , cityCode, cityLat, cityLon;
+    // if(obj === 'Hawaii'){
+      cityStae = obj.state;
+    // }
+    return capCity , cityCode, cityLat, cityLon, cityStae;
   }
-  setTimeout(function () {
+  setTimeout(function () { // logo is loaded
     $('#logo').show();
     $('#logo').addClass('animated fadeIn');
     //
-    setTimeout(() => {
+    setTimeout(() => {// start code
       $('.container').show();
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
         //
-        var userSelected = $('#region-list').val();
+        let userSelected = $('#region-list').val();
         console.log('user selected: ', userSelected);
         switch (userSelected) {
           case "Malawi":
-          cityInfo(Malawi);
+          cityInfo(malawi);
             console.log('City name: ', capCity);
             break;
             //
           case "Jordan":
-            cityInfo(Jordan);
+            cityInfo(jordan);
             console.log('City name: ', capCity);
             break;
             //
           case "Nepal":
-            cityInfo(Nepal);
+            cityInfo(nepal);
             console.log('City name: ', capCity);
             break;
             //
           case "Fiji":
-            cityInfo(Fiji);
+            cityInfo(fiji);
             console.log('City name: ', capCity);
             break;
             //
           case "Hawaii":
-            cityInfo(Hawaii);
+            cityInfo(hawaii);
             console.log('City name: ', capCity);
             break;
             //
           case "Peru":
-            cityInfo(Peru);
+            cityInfo(peru);
             console.log('City name: ', capCity);
             break;
             //
           case "Cambodia":
-            cityInfo(Cambodia);
+            cityInfo(cambodia);
             console.log('City name: ', capCity);
             break;
             //
           case "India":
-            cityInfo(India);
+            cityInfo(india);
             console.log('City name: ', capCity);
             break;
             //
           case "Thailand":
-            cityInfo(Thailand);
+            cityInfo(thailand);
             console.log('City name: ', capCity);
             break;
             //
           case "Ecuador":
-            cityInfo(Ecuador);
+            cityInfo(ecuador);
             console.log('City name: ', capCity);
             break;
             //
           case "Kenya":
-            cityInfo(Kenya);
+            cityInfo(kenya);
             console.log('City name: ', capCity);
             break;
             //
           case "Senegal":
-            cityInfo(Senegal);
+            cityInfo(senegal);
             console.log('City name: ', capCity);
             break;
             //
           case "Philippines":
-            cityInfo(Philippines);
+            cityInfo(philippines);
             console.log('City name: ', capCity);
             break;
             //
         }
         //
-        var meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
+        if(userSelected != "Country"){
+          // Ajax start here
+          let meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
+          $.ajax({
+            url: meetupURL,
+            method: 'GET',
+            data: {
+              key: '116b73e106c122e802f104e7767213',
+              city: capCity,
+              state: cityStae,
+              country: cityCode,
+              category: 1, //hard coded temp
+              page: 10,
+              sign: 'true',
+            }
+          }).done(function (response) {
+            // takes response string and converts it to a JavaScript object
+            let myResp = JSON.parse(response);
+            console.log('meetup: ', myResp);
 
-        $.ajax({
-          url: meetupURL,
-          method: 'GET',
-          data: {
-            key: '116b73e106c122e802f104e7767213',
-            city: capCity,
-            country: 'CA',
-            category: 1, //hard coded temp
-            sign: 'true',
-          }
-        }).done(function (response) {
-          // console.log('meetup ', response);
-        });
+
+          // }
+          });
+        } else{
+          console.log("notting");
+        }
       });
     }, 400);
   }, 500);
