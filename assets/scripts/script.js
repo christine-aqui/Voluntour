@@ -121,10 +121,20 @@ $(document).ready(function () {
             // takes response string and converts it to a JavaScript object
             let myResp = JSON.parse(response);
             console.log('meetup: ', myResp);
-
-
-          // }
+                      // }
           });
+          let newsKey = 'd91452c6c0c0450dbd402a43d19d7905'
+          let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`
+          $.ajax({
+            url: newsURL,
+            method: 'GET',
+            language: 'en',
+            sortBy: 'relevancy',
+
+          }).done(function(newsResponse){
+            console.log('news: ', newsResponse)
+          })
+
         } else{
           console.log("notting");
         }
