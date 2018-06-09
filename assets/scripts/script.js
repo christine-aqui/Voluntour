@@ -5,6 +5,26 @@ let cityStae = '';
 let cityLat = 0;
 let cityLon = 0;
 let userSelected = '';
+let meetupHTML = `<div class="meetup_event">
+                    <div class="group1">
+                      <img class="meetup_image" src="" alt="">
+                      <h4 class="meetup_name"></h4>
+                    </div>
+                    <div>
+                      <div class="meetup_desciption"></div>
+                      <div class=" subgroup">
+                        <h5 class="meetup_status"></h5>
+                        <a class="meetup_link" href="#"target="_blank">More Infor</a>
+                      </div>
+                    </div>
+                  </div>`
+// let meetup_image = "";
+// let meetup_name = "";
+// let meetup_desciption = "";
+// let meetup_status= "";
+// let meetup_link = "";
+
+
 //
 //
 $('#logo').hide();
@@ -125,16 +145,22 @@ $(document).ready(function () {
             let meetUpResults = myResp.results;
             if (myResp.results.length != 0) {
               console.log('meetup: ', meetUpResults);
-              let newDiv = "<div class='meetup-event'></div>";
-              let newP = '<p>';
-              let newH3 = '<h3>';
-              let newImg = `<img class='meetup-image'>`;
               for (let result of meetUpResults) {
                 // let meetupImage = meetUpResults[result].photo_url;
-                console.log(result.name);
-                $('#meetup-events').append(newDiv);
-                $('.meetup-event').append(newImg);
+                // console.log(result.name);
+                $('#meetup-events').append(meetupHTML);
+                $('.meetup_image').attr("src", result.photo_url);
+                $('.meetup_image').attr("alt", "event image");
+                $('.meetup_name').text(result.name);
+                $('.meetup_desciption').html(result.description);
+                $('.meetup_status').text(result.status);
+                $('.meetup_link').attr('href', result.event_url);
 
+                // let meetup_image = "";
+                // let meetup_name = "";
+                // let meetup_desciption = "";
+                // let meetup_status= "";
+                // let meetup_link = "";
               }
             } else {
               console.log("no events");
