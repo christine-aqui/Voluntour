@@ -4,6 +4,7 @@ let cityCode = '';
 let cityStae = '';
 let cityLat = 0;
 let cityLon = 0;
+let userSelected = '';
 //
 //
 $('#logo').hide();
@@ -32,8 +33,9 @@ $(document).ready(function () {
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
         //
-        let userSelected = $('#region-list').val();
+        userSelected = $('#region-list').val();
         console.log('user selected: ', userSelected);
+
         switch (userSelected) {
           case "Malawi":
             cityInfo(malawi);
@@ -126,12 +128,12 @@ $(document).ready(function () {
               let newDiv = "<div class='meetup-event'></div>";
               let newP = '<p>';
               let newH3 = '<h3>';
-              let newImg = `<img src="${meetupImage}" alt="">`;
+              let newImg = `<img class='meetup-image'>`;
               for (let result of meetUpResults) {
-                let meetupImage = meetUpResults[result].photo_url;
+                // let meetupImage = meetUpResults[result].photo_url;
                 console.log(result.name);
                 $('#meetup-events').append(newDiv);
-                // $('.meetup-event').append(newImg);
+                $('.meetup-event').append(newImg);
 
               }
             } else {
@@ -145,9 +147,11 @@ $(document).ready(function () {
             // results[i].event_url
 
           });
+          //
         } else {
           console.log("notting");
         }
+
       });
       // end of Meetup api
       //
