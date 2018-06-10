@@ -69,67 +69,67 @@ $(document).ready(function () {
         switch (userSelected) {
           case "Malawi":
             cityInfo(malawi);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Jordan":
             cityInfo(jordan);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Nepal":
             cityInfo(nepal);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Fiji":
             cityInfo(fiji);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Hawaii":
             cityInfo(hawaii);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Peru":
             cityInfo(peru);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Cambodia":
             cityInfo(cambodia);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "India":
             cityInfo(india);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Thailand":
             cityInfo(thailand);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Ecuador":
             cityInfo(ecuador);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Kenya":
             cityInfo(kenya);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Senegal":
             cityInfo(senegal);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
           case "Philippines":
             cityInfo(philippines);
-            console.log('City name: ', capCity);
+            // console.log('City name: ', capCity);
             break;
             //
         }

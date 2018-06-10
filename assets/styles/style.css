@@ -98,6 +98,7 @@ body {
 }
 
 #weather-info {
+  width: 80%;
   display: flex;
   margin: 1%;
   padding: 20px;
@@ -108,7 +109,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   margin: 2%;
 }
