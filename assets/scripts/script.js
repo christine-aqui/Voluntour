@@ -17,12 +17,22 @@ let meetupHTML = `<div class="meetup_event hvr-rectangle-out hvr-box-shadow-outs
                         <a class="meetup_link" href="#"target="_blank">More Infor</a>
                       </div>
                     </div>
-                  </div>`
-// let meetup_image = "";
-// let meetup_name = "";
-// let meetup_desciption = "";
-// let meetup_status= "";
-// let meetup_link = "";
+                  </div>`;
+//
+// let key = '5511ae6b581be2e6b0625f298b7d62ae';
+let unit = 'metric';
+// docs  https://openweathermap.org/forecast16
+// let x = 0;
+let weatherHTML = `<div class="cityWeather">
+                      <img class="weatherIcon" src="" alt="">
+                      <h5 class="weatherText"></h5>
+                      <h5 class="WeatherTemp"></h5>
+                      <h6 class="weatherDate"></h6>
+                    </div>`;
+let weatherCycle = [];
+let wIcon = [];
+let wText = [];
+
 
 
 //
@@ -156,75 +166,103 @@ $(document).ready(function () {
                 $('.meetup_desciption').html(result.description);
                 $('.meetup_status').text(eventStatus);
                 $('.meetup_link').attr('href', result.event_url);
-
-                // let meetup_image = "";
-                // let meetup_name = "";
-                // let meetup_desciption = "";
-                // let meetup_status= "";
-                // let meetup_link = "";
               }
             } else {
               console.log("no events");
             }
-            // Pushing the html
-            // I want the results[i].name
-            // results[i].photo_url
-            // results[i].status
-            // results[i].description
-            // results[i].event_url
-
+            //
           });
           //
         } else {
           console.log("notting");
         }
+        // end of Meetup api
+        //
+        //
+        // Lisa's Code Here
+        let key = '5511ae6b581be2e6b0625f298b7d62ae';
+        let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${capCity},${cityCode}&cnt=6&units=${unit}&appid=${key}`;
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function (response) {
+          // console.log('URL: ',queryURL);
+          // console.log('user selected for OW: ', userSelected);
+          console.log('Open weather: ', response);
+          let wCondition ='';
 
-      });
-      // end of Meetup api
-      //
-      //
-      // Lisa's Code Here
+          let weatherArray = response.list;
+          // console.log(weatherArray);
+          for(let wDay of weatherArray){
+            $('#weather-info').append(weatherHTML);
+            for(let thatDay of wDay.weather){
+          console.log(wDay);
+          weatherCycle = wDay;
+              switch (thatDay.main) {
+                case 'Clouds':
+                wCondition = './assets/images/Cloudy.png';
+                  break;
+                case 'Rain':
+                wCondition = './assets/images/Rain.png';
+                  break;
+                case 'Clear':
+                wCondition = './assets/images/Sunny.png';
+                  break;
+                case 'Snow':
+                wCondition = './assets/images/';
+                  break;
 
-      //
-      //
-      //
-      //
-      //
-      // admeh's Code Here
-      // Admeds code
-      // News Api
-      let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
-      let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`;
-      $.ajax({
-        url: newsURL,
-        method: 'GET',
-        language: 'en',
-        sortBy: 'relevancy',
-      }).done(function (newsResponse) {
-        console.log('news: ', newsResponse);
-      });
-      // advisoryAPI
-      let advisoryKey = '7csv43cjcwbtnfyspr6n6gjd';
-      let advisoryURL = `https://api.tugo.com/v1/travelsafe/countries/${cityCode}`;
-      $.ajax({
-        url: advisoryURL,
-        method: 'GET',
-        headers: {
-          "X-Auth-API-Key": advisoryKey
-        }
-      }).done(function (advisoryResponse) {
-        console.log('advisory: ', advisoryResponse);
-      });
-      //
-      //
-      //
-      //
-      //
-      // usama's Code Here
+                default:
+                  break;
+              }
+            }
+          }
+          $('.weatherIcon').attr("src", wCondition);
+          $('.weatherText').text(weatherCycle.weather[0].main);
+          $('.WeatherTemp').text(weatherCycle.main.temp);
+          $('.weatherDate').text(weatherCycle.dt_txt);
+        });
+        //
+        //
+        //
+        //
+        //
+        // admeh's Code Here
+        // Admeds code
+        // News Api
+        let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
+        let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`;
+        $.ajax({
+          url: newsURL,
+          method: 'GET',
+          language: 'en',
+          sortBy: 'relevancy',
+        }).done(function (newsResponse) {
+          // console.log('news: ', newsResponse);
+        });
+        // advisoryAPI
+        let advisoryKey = '7csv43cjcwbtnfyspr6n6gjd';
+        let advisoryURL = `https://api.tugo.com/v1/travelsafe/countries/${cityCode}`;
+        $.ajax({
+          url: advisoryURL,
+          method: 'GET',
+          headers: {
+            "X-Auth-API-Key": advisoryKey
+          }
+        }).done(function (advisoryResponse) {
+          // console.log('advisory: ', advisoryResponse);
+        });
+        //
+        //
+        //
+        //
+        //
+        // usama's Code Here
 
-      //
-      //
-      //
+        //
+        //
+        //
+      });
     }, 400);
   }, 500);
   //
