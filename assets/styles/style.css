@@ -41,7 +41,7 @@ body {
 }
 
 .Boxed {
-  border: 2px solid green;
+  /* border: 2px solid green; */
 }
 
 .landingBlock {
@@ -50,4 +50,66 @@ body {
   /* opacity: 0.2; */
   color: white;
   text-align: center;
+}
+
+.meetup_event {
+  margin: 2%;
+  padding: 20px;
+  display: flex;
+  /* border: 2px solid rgba(211, 211, 211, 0.5); */
+}
+
+/* .meetup_event :hover{
+
+} */
+
+.group1 {
+  max-width: 20%;
+  max-height: 100%;
+  margin: 0.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.group2 {
+  width: 80%;
+  margin: 0.5%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.subgroup {
+  display: flex;
+  justify-content: space-around;
+}
+
+.meetup_image {
+  /* padding: 5px; */
+  margin: 5px;
+}
+
+.weatherIcon {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+#weather-info {
+  width: 80%;
+  display: flex;
+  margin: 1%;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.cityWeather {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
 }
