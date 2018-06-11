@@ -5,41 +5,41 @@ let cityStae = '';
 let cityLat = 0;
 let cityLon = 0;
 let userSelected = '';
-let mImage = '';
-let mName = '';
-let mDesciption = '';
-let mStatus = '';
-let mLink = '';
-let weatherArray = [];
-let meetupHTML = `
-<div class="meetup_event hvr-rectangle-out hvr-box-shadow-outset">
-<div class="group1">
-<img class="meetup_image" src="" alt="">
-<h5 class="meetup_name"></h5>
-</div>
-<div class="group2">
-<div class="meetup_desciption"></div>
-<div class="subgroup">
-<h6 class="meetup_status"></h6>
-<a class="meetup_link" href=""target="_blank">More Infor</a>
-</div>
-</div>
-</div>`;
+let meetupHTML = `<div class="meetup_event hvr-rectangle-out hvr-box-shadow-outset">
+                    <div class="group1">
+                      <img class="meetup_image" src="" alt="">
+                      <h5 class="meetup_name"></h5>
+                    </div>
+                    <div class="group2">
+                      <div class="meetup_desciption"></div>
+                      <div class=" subgroup">
+                        <h6 class="meetup_status"></h6>
+                        <a class="meetup_link" href="#"target="_blank">More Infor</a>
+                      </div>
+                    </div>
+                  </div>`;
+let mImage = [];
+let mDisciption = [];
+let mStatus = [];
+let mEventURL = [];
+let mURL = [];
+let mName = [];
 //
 // let key = '5511ae6b581be2e6b0625f298b7d62ae';
 let unit = 'metric';
 // docs  https://openweathermap.org/forecast16
 // let x = 0;
-let weatherHTML = `
-<div class="cityWeather">
-<img class="weatherIcon" src="" alt="">
-<h5 class="weatherText"></h5>
-<h5 class="WeatherTemp"></h5>
-<h6 class="weatherDate"></h6>
-</div>`;
+let weatherHTML = `<div class="cityWeather">
+                      <img class="weatherIcon" src="" alt="">
+                      <h5 class="weatherText"></h5>
+                      <h5 class="WeatherTemp"></h5>
+                      <h6 class="weatherDate"></h6>
+                    </div>`;
+let wURL = [];
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
+
 
 
 
@@ -71,10 +71,12 @@ $(document).ready(function () {
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
         //
+
         //
         userSelected = $('#region-list').val();
         console.log('user selected: ', userSelected);
         $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
+
         switch (userSelected) {
           case "Malawi":
             cityInfo(malawi);
@@ -163,21 +165,26 @@ $(document).ready(function () {
             let myResp = JSON.parse(response);
             let meetUpResults = myResp.results;
             if (myResp.results.length != 0) {
-              console.log('meetup: ', meetUpResults);
-              meetUpResults.forEach(element => {
-                // console.log(element);
-                getData(element);
-                displayHTML(meetupHTML);
+              // console.log('meetup: ', meetUpResults);
+              meetUpResults.forEach(function(result){
+                // console.log('my url: ',mURL);
+                let eventStatus = `Status: ${result.status}`;
+                mImage.push(result.photo_url);
+                // mDisciption.push(result.description);
+                // mName.push(result.name);
+                // mStatus.push(eventStatus);
+                // mURL.push(result.event_url);
+                //
+                // $('#meetup-events').append(meetupHTML);
+                // $('.meetup_image').attr("src", result.photo_url);
+                // // $('.meetup_image').attr("alt", "event image");
+                // $('.meetup_name').text(result.name);
+                // $('.meetup_desciption').html(result.description);
+                // $('.meetup_status').text(eventStatus);
+                // $('.meetup_link').attr('href', result.event_url);
+                displayMHTML(mImage);
               });
-              //
-              // for (let result of meetUpResults) {
-              //   let eventStatus = `Status: ${result.status}`;
-              //   //   mImage = result.photo_url;
-              //   console.log('loop res ',result);
-              //   displayMeetup(result, eventStatus);
-              // };
-              // meetUpResults.map((result, i) =>{
-              // });
+              // function here
             } else {
               console.log("no events");
             }
@@ -187,15 +194,25 @@ $(document).ready(function () {
         } else {
           console.log("notting");
         }
+        function displayMHTML(data1,data2,data3,data4,data5){
+          $('#meetup-events').append(meetupHTML);
+          // for (const i of data1) {
+            $('.meetup_image').attr("src", data1);
+            console.log('my url: ',data1);
+          // };
+
+          // let eventStatus = `Status: ${result.status}`;
+          //       // $('.meetup_image').attr("alt", "event image");
+          //       $('.meetup_name').text(result.name);
+          //       $('.meetup_desciption').html(result.description);
+          //       $('.meetup_status').text(eventStatus);
+          //       $('.meetup_link').attr('href', result.event_url);
+        };
         // end of Meetup api
         //
         //
         // Lisa's Code Here
-        getWeather();
-        //
-        //
-        //
-        //
+        getWeather(userSelected);
         //
         // admeh's Code Here
         // Admeds code
@@ -228,6 +245,7 @@ $(document).ready(function () {
         //
         //
         // usama's Code Here
+
         //
         //
         //
@@ -237,7 +255,7 @@ $(document).ready(function () {
   //
 });
 // end of doc ready
-function getWeather() {
+function getWeather(selection) {
   let key = '5511ae6b581be2e6b0625f298b7d62ae';
   let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${capCity},${cityCode}&cnt=6&units=${unit}&appid=${key}`;
   $.ajax({
@@ -246,7 +264,8 @@ function getWeather() {
   }).done(function (response) {
     console.log('Open weather: ', response);
     let wCondition = '';
-    weatherArray = response.list;
+
+    let weatherArray = response.list;
     for (let wDay of weatherArray) {
       $('#weather-info').append(weatherHTML);
       //
@@ -278,24 +297,3 @@ function getWeather() {
   });
 }
 
-function displayHTML(arrData) {
-  $('#meetup-events').append(arrData);
-}
-
-function getData(data) {
-  return meetupHTML =
-    `
-    <div class="meetup_event hvr-rectangle-out hvr-box-shadow-outset">
-    <div class="group1">
-    <img class="meetup_image" src="${data.photo_url}" alt="">
-    <h5 class="meetup_name">${data.name}</h5>
-    </div>
-    <div class="group2">
-    <div class="meetup_desciption">${data.description}</div>
-    <div class="subgroup">
-    <h6 class="meetup_status">${data.status}</h6>
-    <a class="meetup_link" href="${data.event_url}" target="_blank">More Infor</a>
-    </div>
-    </div>
-    </div>`;
-}
