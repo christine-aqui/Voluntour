@@ -68,6 +68,7 @@ $(document).ready(function () {
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
         //
+        //
         userSelected = $('#region-list').val();
         console.log('user selected: ', userSelected);
         $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
@@ -160,33 +161,11 @@ $(document).ready(function () {
             let meetUpResults = myResp.results;
             if (myResp.results.length != 0) {
               console.log('meetup: ', meetUpResults);
+//
               for (let result of meetUpResults) {
                 let eventStatus = `Status: ${result.status}`;
-                //
-                // (function(){
-                //   let x = result;
-                //   setTimeout(function(){
-                    mImage = result.photo_url;
-                    // console.log(mImage);
-                    mName = result.name;
-                    // console.log(mName);
-                    mDesciption = result.description;
-                    // console.log(mDesciption);
-                    mStatus = eventStatus;
-                    // console.log(mStatus);
-                    mLink = result.event_url;
-                    // console.log(mLink);
-                    $('#meetup-events').append(meetupHTML);
-                // },1000);
-                // })();
-                //
-                //
-                // $('.meetup_image').attr("src", result.photo_url);
-                // $('.meetup_image').attr("alt", "event image");
-                // $('.meetup_name').text(result.name);
-                // $('.meetup_desciption').html(result.description);
-                // $('.meetup_status').text(eventStatus);
-                // $('.meetup_link').attr('href', result.event_url);
+                mImage = result.photo_url;
+                displayMeetup(result, eventStatus);
               }
             } else {
               console.log("no events");
@@ -289,4 +268,12 @@ function getWeather() {
   });
 }
 
-// function
+function displayMeetup(mData, mstate){
+  $('#meetup-events').append(meetupHTML);
+  $('.meetup_image').attr("src", mData.photo_url);
+  $('.meetup_image').attr("alt", "event image");
+  $('.meetup_name').text(mData.name);
+  $('.meetup_desciption').html(mData.description);
+  $('.meetup_status').text(mstate);
+  $('.meetup_link').attr('href', mData.event_url);
+}
