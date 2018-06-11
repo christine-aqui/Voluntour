@@ -10,30 +10,33 @@ let mName = '';
 let mDesciption = '';
 let mStatus = '';
 let mLink = '';
-let meetupHTML = `<div class="meetup_event hvr-rectangle-out hvr-box-shadow-outset">
-                    <div class="group1">
-                      <img class="meetup_image" src="${mImage}" alt="">
-                      <h5 class="meetup_name">${mName}</h5>
-                    </div>
-                    <div class="group2">
-                      <div class="meetup_desciption">${mDesciption}</div>
-                      <div class=" subgroup">
-                        <h6 class="meetup_status">${mStatus}</h6>
-                        <a class="meetup_link" href="${mLink}"target="_blank">More Infor</a>
-                      </div>
-                    </div>
-                  </div>`;
+let weatherArray = [];
+let meetupHTML = `
+<div class="meetup_event hvr-rectangle-out hvr-box-shadow-outset">
+<div class="group1">
+<img class="meetup_image" src="" alt="">
+<h5 class="meetup_name"></h5>
+</div>
+<div class="group2">
+<div class="meetup_desciption"></div>
+<div class="subgroup">
+<h6 class="meetup_status"></h6>
+<a class="meetup_link" href=""target="_blank">More Infor</a>
+</div>
+</div>
+</div>`;
 //
 // let key = '5511ae6b581be2e6b0625f298b7d62ae';
 let unit = 'metric';
 // docs  https://openweathermap.org/forecast16
 // let x = 0;
-let weatherHTML = `<div class="cityWeather">
-                      <img class="weatherIcon" src="" alt="">
-                      <h5 class="weatherText"></h5>
-                      <h5 class="WeatherTemp"></h5>
-                      <h6 class="weatherDate"></h6>
-                    </div>`;
+let weatherHTML = `
+<div class="cityWeather">
+<img class="weatherIcon" src="" alt="">
+<h5 class="weatherText"></h5>
+<h5 class="WeatherTemp"></h5>
+<h6 class="weatherDate"></h6>
+</div>`;
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
@@ -161,12 +164,20 @@ $(document).ready(function () {
             let meetUpResults = myResp.results;
             if (myResp.results.length != 0) {
               console.log('meetup: ', meetUpResults);
-//
-              for (let result of meetUpResults) {
-                let eventStatus = `Status: ${result.status}`;
-                mImage = result.photo_url;
-                displayMeetup(result, eventStatus);
-              }
+              meetUpResults.forEach(element => {
+                // console.log(element);
+                getData(element);
+                displayHTML(meetupHTML);
+              });
+              //
+              // for (let result of meetUpResults) {
+              //   let eventStatus = `Status: ${result.status}`;
+              //   //   mImage = result.photo_url;
+              //   console.log('loop res ',result);
+              //   displayMeetup(result, eventStatus);
+              // };
+              // meetUpResults.map((result, i) =>{
+              // });
             } else {
               console.log("no events");
             }
@@ -235,8 +246,7 @@ function getWeather() {
   }).done(function (response) {
     console.log('Open weather: ', response);
     let wCondition = '';
-
-    let weatherArray = response.list;
+    weatherArray = response.list;
     for (let wDay of weatherArray) {
       $('#weather-info').append(weatherHTML);
       //
@@ -268,12 +278,24 @@ function getWeather() {
   });
 }
 
-function displayMeetup(mData, mstate){
-  $('#meetup-events').append(meetupHTML);
-  $('.meetup_image').attr("src", mData.photo_url);
-  $('.meetup_image').attr("alt", "event image");
-  $('.meetup_name').text(mData.name);
-  $('.meetup_desciption').html(mData.description);
-  $('.meetup_status').text(mstate);
-  $('.meetup_link').attr('href', mData.event_url);
+function displayHTML(arrData) {
+  $('#meetup-events').append(arrData);
+}
+
+function getData(data) {
+  return meetupHTML =
+    `
+    <div class="meetup_event hvr-rectangle-out hvr-box-shadow-outset">
+    <div class="group1">
+    <img class="meetup_image" src="${data.photo_url}" alt="">
+    <h5 class="meetup_name">${data.name}</h5>
+    </div>
+    <div class="group2">
+    <div class="meetup_desciption">${data.description}</div>
+    <div class="subgroup">
+    <h6 class="meetup_status">${data.status}</h6>
+    <a class="meetup_link" href="${data.event_url}" target="_blank">More Infor</a>
+    </div>
+    </div>
+    </div>`;
 }
