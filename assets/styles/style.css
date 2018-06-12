@@ -88,15 +88,21 @@ body {
   margin: 5px;
 }
 
+.zeorMeets {
+  text-align: center;
+  padding: 1%;
+  /* margin: 1%; */
+}
+
 .weatherIcon {
   max-width: 150px;
   max-height: 150px;
 }
 
 #weather-info {
-  /* width: 80%; */
+  width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: first baseline;
   /* margin: 1%; */
   /* padding: 20px; */
   flex-wrap: wrap;

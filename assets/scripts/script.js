@@ -25,13 +25,14 @@ let meetupHTML = `
 </div>
 </div>
 </div>`;
+let noMeetup = ``;
 //
 // let key = '5511ae6b581be2e6b0625f298b7d62ae';
 let unit = 'metric';
 // docs  https://openweathermap.org/forecast16
 // let x = 0;
 let weatherHTML = `
-<div class="cityWeather">
+<div class="cityWeather hvr-underline-from-center">
 <img class="weatherIcon" src="" alt="">
 <h5 class="weatherText"></h5>
 <h5 class="WeatherTemp"></h5>
@@ -41,27 +42,27 @@ let wCondition = '';
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
-
+// ---------------------------------------------------------------------------
 
 
 //
 //
 $('#logo').hide();
 $('.container').hide();
-
+// ---------------------------------------------------------------------------
 $(document).ready(function () {
   console.log("document ready!");
   //
-  function cityInfo(obj) {
-    capCity = obj.capitalCity;
-    cityCode = obj.countryCode1;
-    cityLat = obj.lat;
-    cityLon = obj.lon;
-    // if(obj === 'Hawaii'){
-    cityStae = obj.state;
-    // }
-    return capCity, cityCode, cityLat, cityLon, cityStae;
-  }
+  // function cityInfo(obj) {
+  //   capCity = obj.capitalCity;
+  //   cityCode = obj.countryCode1;
+  //   cityLat = obj.lat;
+  //   cityLon = obj.lon;
+  //   // if(obj === 'Hawaii'){
+  //   cityStae = obj.state;
+  //   // }
+  //   return capCity, cityCode, cityLat, cityLon, cityStae;
+  // }
   setTimeout(function () { // logo is loaded
     $('#logo').show();
     $('#logo').addClass('animated fadeIn');
@@ -71,78 +72,17 @@ $(document).ready(function () {
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
+        //on button press remove any existing content from before.
+        $( ".cityWeather" ).remove();
+        $( ".meetup_event" ).remove();
+        $( ".zeorMeets" ).remove();
+
         //
         //
         userSelected = $('#region-list').val();
         console.log('user selected: ', userSelected);
         $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
-        switch (userSelected) {
-          case "Malawi":
-            cityInfo(malawi);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Jordan":
-            cityInfo(jordan);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Nepal":
-            cityInfo(nepal);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Fiji":
-            cityInfo(fiji);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Hawaii":
-            cityInfo(hawaii);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Peru":
-            cityInfo(peru);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Cambodia":
-            cityInfo(cambodia);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "India":
-            cityInfo(india);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Thailand":
-            cityInfo(thailand);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Ecuador":
-            cityInfo(ecuador);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Kenya":
-            cityInfo(kenya);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Senegal":
-            cityInfo(senegal);
-            // console.log('City name: ', capCity);
-            break;
-            //
-          case "Philippines":
-            cityInfo(philippines);
-            // console.log('City name: ', capCity);
-            break;
-            //
-        }
+        uSelected(userSelected);
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
           // Ajax start here
@@ -156,7 +96,7 @@ $(document).ready(function () {
               state: cityStae,
               country: cityCode,
               // category: 1, //hard coded temp
-              page: 10,
+              page: 5,
               sign: 'true',
             }
           }).done(function (response) {
@@ -172,23 +112,26 @@ $(document).ready(function () {
               });
             } else {
               console.log("no events");
+              noMeetup = `<div class="zeorMeets">
+<h3>Sorry, Looks like no events were found on Meetups.com for ${capCity}, ${cityCode}.</h3>
+</div>`;
+              $('#meetup-events').append(noMeetup);
             }
             //
           });
           //
         } else {
-          console.log("notting");
+          console.log("No country selected");
         }
         // end of Meetup api
         //
         //
-        // Lisa's Code Here
+        // Lisa's Code Here =]
         getWeather();
         //
         //
         //
         // admeh's Code Here
-        // Admeds code
         // News Api
         let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
         let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`;
@@ -214,9 +157,6 @@ $(document).ready(function () {
         });
         //
         //
-        //
-        //
-        //
         // usama's Code Here
         //
         //
@@ -228,10 +168,90 @@ $(document).ready(function () {
 });
 // end of doc ready
 
+// ----------------------------------------------------------------------------
+function cityInfo(obj) {
+  capCity = obj.capitalCity;
+  cityCode = obj.countryCode1;
+  cityLat = obj.lat;
+  cityLon = obj.lon;
+  cityStae = obj.state;
+  return capCity, cityCode, cityLat, cityLon, cityStae;
+}
+
+function uSelected(uSel) {
+  switch (uSel) {
+    case "Malawi":
+      cityInfo(malawi);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Jordan":
+      cityInfo(jordan);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Nepal":
+      cityInfo(nepal);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Fiji":
+      cityInfo(fiji);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Hawaii":
+      cityInfo(hawaii);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Peru":
+      cityInfo(peru);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Cambodia":
+      cityInfo(cambodia);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "India":
+      cityInfo(india);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Thailand":
+      cityInfo(thailand);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Ecuador":
+      cityInfo(ecuador);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Kenya":
+      cityInfo(kenya);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Senegal":
+      cityInfo(senegal);
+      // console.log('City name: ', capCity);
+      break;
+      //
+    case "Philippines":
+      cityInfo(philippines);
+      // console.log('City name: ', capCity);
+      break;
+      //
+  }
+};
 // -----------------------------------------------------------------------------
 function displayHTML(arrmData) {
   $('#meetup-events').append(arrmData);
 };
+
 function getData(data) {
   return meetupHTML =
     `
@@ -253,16 +273,18 @@ function getData(data) {
 function displayWHTML(arrwData) {
   $('#weather-info').append(arrwData);
 };
+
 function getWeatherdata(data, x) {
   return weatherHTML =
     `
-<div class="cityWeather">
+<div class="cityWeather hvr-underline-from-center">
 <img class="weatherIcon" src="${x}" alt="">
 <h5 class="weatherText">${data.weather[0].main}</h5>
 <h5 class="WeatherTemp">${data.main.temp}'°C'</h5>
 <h6 class="weatherDate">${data.dt_txt}</h6>
 </div>`;
 };
+
 function getCondition(wcData) {
   switch (wcData.weather[0].main) {
     case 'Clouds':
@@ -282,13 +304,14 @@ function getCondition(wcData) {
       // console.log(wCondition);
       break;
     default:
-    console.log(wCondition);
+      console.log(wCondition);
       break;
   };
 };
+
 function getWeather() {
   let key = '5511ae6b581be2e6b0625f298b7d62ae';
-  let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${capCity},${cityCode}&cnt=8&units=${unit}&appid=${key}`;
+  let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${capCity},${cityCode}&cnt=5&units=${unit}&appid=${key}`;
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -298,7 +321,7 @@ function getWeather() {
     weatherArray.forEach(report => {
       // console.log('wReport: ',report);
       getCondition(report);
-      getWeatherdata(report,wCondition);
+      getWeatherdata(report, wCondition);
       displayWHTML(weatherHTML);
     });
   });
