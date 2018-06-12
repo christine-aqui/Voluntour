@@ -1,6 +1,3 @@
-
-
-
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBqAqj7yjN_NyKsJkoo4KFMEFeesHymTl4",
@@ -11,7 +8,7 @@
     messagingSenderId: "642980408159"
   };
   firebase.initializeApp(config);
-  
+
   var region = "";
   var organization = "";
   var start = "";
@@ -25,7 +22,7 @@
     start = $("#start-input").val().trim();
     type = $("#type-input").val().trim();
     itinerary = $("#itinerary-input").val().trim();
-  
+
   firebase.database().ref().push({
       region:region,
       organization:organization,
@@ -33,7 +30,6 @@
       type:type,
       itinerary:itinerary,
       dateAdded:firebase.database.ServerValue.TIMESTAMP
-   
   })
 })
 
@@ -45,4 +41,14 @@ firebase.database().ref().orderByChild("dateAdded").limitToLast(2).on("child_add
     $("#itinerary-display").html(snapshot.val().itinerary);
     console.log("test")
 })
+
+// $(document).ready(function () {
+//   var database = firebase.database();
+//   var itineraryData;
+//   database.ref().on("value", function (snapshot) {
+//     itineraryData = snapshot.val();
+//     console.log(itineraryData);
+//   });
+
+// });
 

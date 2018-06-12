@@ -53,17 +53,6 @@ $('.container').hide();
 // ---------------------------------------------------------------------------
 $(document).ready(function () {
   console.log("document ready!");
-  //
-  // function cityInfo(obj) {
-  //   capCity = obj.capitalCity;
-  //   cityCode = obj.countryCode1;
-  //   cityLat = obj.lat;
-  //   cityLon = obj.lon;
-  //   // if(obj === 'Hawaii'){
-  //   cityStae = obj.state;
-  //   // }
-  //   return capCity, cityCode, cityLat, cityLon, cityStae;
-  // }
   setTimeout(function () { // logo is loaded
     $('#logo').show();
     $('#logo').addClass('animated fadeIn');
@@ -73,6 +62,15 @@ $(document).ready(function () {
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
+        // call database
+        $(document).ready(function () {
+          var database = firebase.database();
+          var itineraryData;
+          database.ref().on("value", function (snapshot) {
+            itineraryData = snapshot.val();
+            console.log('The itinerary Data: ',itineraryData);
+          });
+        });
         //on button press remove any existing content from before.
         $(".cityWeather").remove();
         $(".meetup_event").remove();
