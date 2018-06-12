@@ -37,6 +37,7 @@ let weatherHTML = `
 <h5 class="WeatherTemp"></h5>
 <h6 class="weatherDate"></h6>
 </div>`;
+let wCondition = '';
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
@@ -169,15 +170,6 @@ $(document).ready(function () {
                 getData(element);
                 displayHTML(meetupHTML);
               });
-              //
-              // for (let result of meetUpResults) {
-              //   let eventStatus = `Status: ${result.status}`;
-              //   //   mImage = result.photo_url;
-              //   console.log('loop res ',result);
-              //   displayMeetup(result, eventStatus);
-              // };
-              // meetUpResults.map((result, i) =>{
-              // });
             } else {
               console.log("no events");
             }
@@ -192,8 +184,6 @@ $(document).ready(function () {
         //
         // Lisa's Code Here
         getWeather();
-        //
-        //
         //
         //
         //
@@ -237,51 +227,11 @@ $(document).ready(function () {
   //
 });
 // end of doc ready
-function getWeather() {
-  let key = '5511ae6b581be2e6b0625f298b7d62ae';
-  let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${capCity},${cityCode}&cnt=6&units=${unit}&appid=${key}`;
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).done(function (response) {
-    console.log('Open weather: ', response);
-    let wCondition = '';
-    weatherArray = response.list;
-    for (let wDay of weatherArray) {
-      $('#weather-info').append(weatherHTML);
-      //
-      for (let thatDay of wDay.weather) {
-        console.log(wDay);
-        weatherCycle = wDay;
-        switch (thatDay.main) {
-          case 'Clouds':
-            wCondition = './assets/images/Cloudy.png';
-            break;
-          case 'Rain':
-            wCondition = './assets/images/Rain.png';
-            break;
-          case 'Clear':
-            wCondition = './assets/images/Sunny.png';
-            break;
-          case 'Snow':
-            wCondition = './assets/assets/images/';
-            break;
-          default:
-            break;
-        }
-      }
-    }
-    $('.weatherIcon').attr("src", wCondition);
-    $('.weatherText').text(weatherCycle.weather[0].main);
-    $('.WeatherTemp').text(weatherCycle.main.temp + '°C');
-    $('.weatherDate').text(weatherCycle.dt_txt);
-  });
-}
 
-function displayHTML(arrData) {
-  $('#meetup-events').append(arrData);
-}
-
+// -----------------------------------------------------------------------------
+function displayHTML(arrmData) {
+  $('#meetup-events').append(arrmData);
+};
 function getData(data) {
   return meetupHTML =
     `
@@ -293,9 +243,64 @@ function getData(data) {
     <div class="group2">
     <div class="meetup_desciption">${data.description}</div>
     <div class="subgroup">
-    <h6 class="meetup_status">${data.status}</h6>
-    <a class="meetup_link" href="${data.event_url}" target="_blank">More Infor</a>
+    <h6 class="meetup_status">Status: ${data.status}</h6>
+    <a class="meetup_link" href="${data.event_url}" target="_blank">More Info</a>
     </div>
     </div>
     </div>`;
-}
+};
+// -----------------------------------------------------------------------------
+function displayWHTML(arrwData) {
+  $('#weather-info').append(arrwData);
+};
+function getWeatherdata(data, x) {
+  return weatherHTML =
+    `
+<div class="cityWeather">
+<img class="weatherIcon" src="${x}" alt="">
+<h5 class="weatherText">${data.weather[0].main}</h5>
+<h5 class="WeatherTemp">${data.main.temp}'°C'</h5>
+<h6 class="weatherDate">${data.dt_txt}</h6>
+</div>`;
+};
+function getCondition(wcData) {
+  switch (wcData.weather[0].main) {
+    case 'Clouds':
+      wCondition = './assets/images/Cloudy.png';
+      // console.log(wCondition);
+      break;
+    case 'Rain':
+      wCondition = './assets/images/Rain.png';
+      // console.log(wCondition);
+      break;
+    case 'Clear':
+      wCondition = './assets/images/Sunny.png';
+      // console.log(wCondition);
+      break;
+    case 'Snow':
+      wCondition = './assets/assets/images/';
+      // console.log(wCondition);
+      break;
+    default:
+    console.log(wCondition);
+      break;
+  };
+};
+function getWeather() {
+  let key = '5511ae6b581be2e6b0625f298b7d62ae';
+  let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${capCity},${cityCode}&cnt=8&units=${unit}&appid=${key}`;
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function (response) {
+    console.log('Open weather: ', response);
+    weatherArray = response.list;
+    weatherArray.forEach(report => {
+      // console.log('wReport: ',report);
+      getCondition(report);
+      getWeatherdata(report,wCondition);
+      displayWHTML(weatherHTML);
+    });
+  });
+};
+// ----------------------------------------------------------------------------

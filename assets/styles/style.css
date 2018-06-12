@@ -14,7 +14,7 @@ body {
   overflow: hidden;
   background-color: transparent;
   margin: 0;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .landing-page--content {
@@ -25,10 +25,10 @@ body {
 
 #main-video {
   position: absolute;
-  top: 0;
+  /* top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 0; */
   z-index: -100;
   min-width: 100%;
   min-height: 100%;
@@ -38,10 +38,6 @@ body {
 
 #return-trips {
   display: none;
-}
-
-.Boxed {
-  /* border: 2px solid green; */
 }
 
 .landingBlock {
@@ -98,10 +94,11 @@ body {
 }
 
 #weather-info {
-  width: 80%;
+  /* width: 80%; */
   display: flex;
-  margin: 1%;
-  padding: 20px;
+  justify-content: center;
+  /* margin: 1%; */
+  /* padding: 20px; */
   flex-wrap: wrap;
 }
 
