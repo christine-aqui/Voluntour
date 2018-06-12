@@ -49,6 +49,7 @@ let wText = [];
 //
 $('#logo').hide();
 $('.container').hide();
+// $('#map').hide();
 // ---------------------------------------------------------------------------
 $(document).ready(function () {
   console.log("document ready!");

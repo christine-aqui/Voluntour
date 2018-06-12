@@ -102,17 +102,18 @@ body {
 }
 
 #weather-info {
-  width: 80%;
+  width: 100%;
   display: flex;
-  justify-content: first baseline;
+  justify-content: center;
   /* margin: 1%; */
   /* padding: 20px; */
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .cityWeather {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -120,7 +121,7 @@ body {
 }
 
 #map {
-  height: 500px;
+  height: 350px;
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
