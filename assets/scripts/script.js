@@ -43,6 +43,18 @@ let weatherCycle = [];
 let wIcon = [];
 let wText = [];
 let firebaseItems;
+let advisoryHTML = `
+<div id="advisory-body">
+<h5 class="advisory-titles">General Travel Advisory</h5>
+<div id="general advisory"></div>
+<h5 class="advisory-titles">Health Advisory</h5>
+<div id="health advisory"></div>
+</div>
+`;
+let newsHTML = `
+<div id="news-list" class="Boxed">
+</div>
+`;
 // ---------------------------------------------------------------------------
 
 
@@ -60,6 +72,7 @@ $(document).ready(function () {
     //
     setTimeout(() => { // start code
       $('.container').show();
+      $('#map').addClass('inactive')
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
@@ -86,6 +99,8 @@ $(document).ready(function () {
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
           getMeetup();
+          $('#map').removeClass('inactive');
+          $('#map').addClass('active');          
         } else {
           console.log("No country selected");
         } // end of Meetup api
