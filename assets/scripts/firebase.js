@@ -48,7 +48,7 @@ firebase.database().ref().orderByChild("dateAdded").limitToLast(2).on("child_add
     var itineraryData;
     database.ref().on("value", function (snapshot) {
       itineraryData = snapshot.val();
-      console.log(itineraryData);
+      console.log('itinerary Data: ',itineraryData);
     });
   }
 

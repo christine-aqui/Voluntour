@@ -42,6 +42,7 @@ let wCondition = '';
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
+let firebaseItems;
 // ---------------------------------------------------------------------------
 
 
@@ -239,7 +240,9 @@ function getMeetup() {
       meetUpResults.forEach(element => {
         // console.log(element);
         getData(element);
-        displayHTML(meetupHTML);
+        setTimeout(() => {
+          displayHTML(meetupHTML);
+        }, 1000);
       });
     } else {
       console.log("no events");
