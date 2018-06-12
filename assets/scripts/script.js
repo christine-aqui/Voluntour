@@ -66,14 +66,15 @@ $(document).ready(function () {
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
         // call database
-        $(document).ready(function () {
-          var database = firebase.database();
-          var itineraryData;
-          database.ref().on("value", function (snapshot) {
-            itineraryData = snapshot.val();
-            console.log('The itinerary Data: ',itineraryData);
-          });
-        });
+        getSpanshot();
+        // $(document).ready(function () {
+          // var database = firebase.database();
+          // var itineraryData;
+          // database.ref().on("value", function (snapshot) {
+          //   itineraryData = snapshot.val();
+          //   console.log('The itinerary Data: ',itineraryData);
+          // });
+        // });
         //on button press remove any existing content from before.
         $(".cityWeather").remove();
         $(".meetup_event").remove();

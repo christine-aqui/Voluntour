@@ -43,12 +43,14 @@ firebase.database().ref().orderByChild("dateAdded").limitToLast(2).on("child_add
 })
 
 // $(document).ready(function () {
-//   var database = firebase.database();
-//   var itineraryData;
-//   database.ref().on("value", function (snapshot) {
-//     itineraryData = snapshot.val();
-//     console.log(itineraryData);
-//   });
+  function getSpanshot(){
+    var database = firebase.database();
+    var itineraryData;
+    database.ref().on("value", function (snapshot) {
+      itineraryData = snapshot.val();
+      console.log(itineraryData);
+    });
+  }
 
 // });
 
