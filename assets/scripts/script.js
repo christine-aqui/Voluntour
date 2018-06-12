@@ -73,10 +73,9 @@ $(document).ready(function () {
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
         //on button press remove any existing content from before.
-        $( ".cityWeather" ).remove();
-        $( ".meetup_event" ).remove();
-        $( ".zeorMeets" ).remove();
-
+        $(".cityWeather").remove();
+        $(".meetup_event").remove();
+        $(".zeorMeets").remove();
         //
         //
         userSelected = $('#region-list').val();
@@ -85,50 +84,14 @@ $(document).ready(function () {
         uSelected(userSelected);
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
-          // Ajax start here
-          let meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
-          $.ajax({
-            url: meetupURL,
-            method: 'GET',
-            data: {
-              key: '116b73e106c122e802f104e7767213',
-              city: capCity,
-              state: cityStae,
-              country: cityCode,
-              // category: 1, //hard coded temp
-              page: 5,
-              sign: 'true',
-            }
-          }).done(function (response) {
-            // takes response string and converts it to a JavaScript object
-            let myResp = JSON.parse(response);
-            let meetUpResults = myResp.results;
-            if (myResp.results.length != 0) {
-              console.log('meetup: ', meetUpResults);
-              meetUpResults.forEach(element => {
-                // console.log(element);
-                getData(element);
-                displayHTML(meetupHTML);
-              });
-            } else {
-              console.log("no events");
-              noMeetup = `<div class="zeorMeets">
-<h3>Sorry, Looks like no events were found on Meetups.com for ${capCity}, ${cityCode}.</h3>
-</div>`;
-              $('#meetup-events').append(noMeetup);
-            }
-            //
-          });
-          //
+          getMeetup();
         } else {
           console.log("No country selected");
-        }
-        // end of Meetup api
+        } // end of Meetup api
         //
         //
         // Lisa's Code Here =]
         getWeather();
-        //
         //
         //
         // admeh's Code Here
@@ -158,6 +121,7 @@ $(document).ready(function () {
         //
         //
         // usama's Code Here
+        initMap();
         //
         //
         //
@@ -252,6 +216,42 @@ function displayHTML(arrmData) {
   $('#meetup-events').append(arrmData);
 };
 
+function getMeetup() {
+  let meetupURL = `https://cors.io/?https://api.meetup.com/2/open_events?`;
+  $.ajax({
+    url: meetupURL,
+    method: 'GET',
+    data: {
+      key: '116b73e106c122e802f104e7767213',
+      city: capCity,
+      state: cityStae,
+      country: cityCode,
+      // category: 1, //hard coded temp
+      page: 5,
+      sign: 'true',
+    }
+  }).done(function (response) {
+    // takes response string and converts it to a JavaScript object
+    let myResp = JSON.parse(response);
+    let meetUpResults = myResp.results;
+    if (myResp.results.length != 0) {
+      console.log('meetup: ', meetUpResults);
+      meetUpResults.forEach(element => {
+        // console.log(element);
+        getData(element);
+        displayHTML(meetupHTML);
+      });
+    } else {
+      console.log("no events");
+      noMeetup = `<div class="zeorMeets">
+      <h3>Sorry, Looks like no events were found on
+      Meetups.com for ${capCity}, ${cityCode}.</h3></div>`;
+      $('#meetup-events').append(noMeetup);
+    }
+    //
+  });
+};
+
 function getData(data) {
   return meetupHTML =
     `
@@ -327,3 +327,20 @@ function getWeather() {
   });
 };
 // ----------------------------------------------------------------------------
+function initMap() {
+  let mapCity = {
+    lat: cityLat,
+    lng: cityLon
+  };
+  // The map, centered at Malawai
+  let map = new google.maps.Map(
+    document.getElementById('map'), {
+      zoom: 7,
+      center: mapCity
+    });
+  // The marker, positioned at Malawai
+  let marker = new google.maps.Marker({
+    position: mapCity,
+    map: map
+  });
+}
