@@ -23,6 +23,8 @@ body {
   align-items: center;
 }
 
+
+
 #main-video {
   position: absolute;
   /* top: 0;
@@ -42,10 +44,15 @@ body {
 
 .landingBlock {
   background-color: rgba(244, 209, 13, 0.3);
-  border-radius: 25px;
+  border-radius: 10px;
   /* opacity: 0.2; */
   color: white;
   text-align: center;
+  padding: 1%
+}
+
+#formBtn {
+  color: rgb(255, 254, 254);
 }
 
 .meetup_event {
