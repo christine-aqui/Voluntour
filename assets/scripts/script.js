@@ -26,6 +26,7 @@ let meetupHTML = `
 </div>
 </div>`;
 let noMeetup = ``;
+let itineraryData;
 //
 // let key = '5511ae6b581be2e6b0625f298b7d62ae';
 let unit = 'metric';
@@ -36,13 +37,25 @@ let weatherHTML = `
 <img class="weatherIcon" src="" alt="">
 <h5 class="weatherText"></h5>
 <h5 class="WeatherTemp"></h5>
-<h6 class="weatherDate"></h6>
 </div>`;
+// <h6 class="weatherDate"></h6>
 let wCondition = '';
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
-let firebaseItems;
+// let firebaseItems = `
+// <div class='returnTrip>
+// <h3>Organization:</h3>
+// <h4>Region:</h4>
+// <h4>Charity Type: </h4>
+// </div>`;
+// let firebaseDisplay = `
+//       <div class='rTrip'>
+//       <h3>Organization: ${fireOrg}</h3>
+//       <h4>Region: ${fireRegion}</h4>
+//       <h4>Charity Type: ${fireType}</h4>
+//       </div>`;
+//
 let advisoryHTML = `
 <div id="advisory-body">
 <h5 class="advisory-titles">General Travel Advisory</h5>
@@ -72,35 +85,32 @@ $(document).ready(function () {
     //
     setTimeout(() => { // start code
       $('.container').show();
-      $('#map').addClass('inactive')
+      $('#map').addClass('inactive');
+      $('#returetrips').addClass('inactive');
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
-        // call database
-        getSpanshot();
-        // $(document).ready(function () {
-          // var database = firebase.database();
-          // var itineraryData;
-          // database.ref().on("value", function (snapshot) {
-          //   itineraryData = snapshot.val();
-          //   console.log('The itinerary Data: ',itineraryData);
-          // });
-        // });
-        //on button press remove any existing content from before.
-        $(".cityWeather").remove();
-        $(".meetup_event").remove();
-        $(".zeorMeets").remove();
-        //
-        //
-        userSelected = $('#region-list').val();
-        console.log('user selected: ', userSelected);
-        $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
-        uSelected(userSelected);
+            //on button press remove any existing content from before.
+            $(".cityWeather").remove();
+            $(".meetup_event").remove();
+            $(".zeorMeets").remove();
+            $(".rTrip").remove();
+            //
+            //
+            userSelected = $('#region-list').val();
+            console.log('user selected: ', userSelected);
+            $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
+            uSelected(userSelected);
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
           getMeetup();
+          getSpanshot(userSelected);
+          $('#returetrips').removeClass('inactive');
+          $('#returetrips').addClass('active');
           $('#map').removeClass('inactive');
-          $('#map').addClass('active');          
+          $('#map').addClass('active');
+          //
+          // $('#returetrips').append(firebaseDisplay);
         } else {
           console.log("No country selected");
         } // end of Meetup api
@@ -137,7 +147,7 @@ $(document).ready(function () {
         //
         //
         // usama's Code Here
-        initMap();
+        renderMap();
         //
         //
         //
@@ -162,6 +172,7 @@ function uSelected(uSel) {
   switch (uSel) {
     case "Malawi":
       cityInfo(malawi);
+      // console.log(itineraryData);
       // console.log('City name: ', capCity);
       break;
       //
@@ -242,6 +253,9 @@ function getMeetup() {
       city: capCity,
       state: cityStae,
       country: cityCode,
+      text: 'volunteer',
+      // text: 'charitable',
+      // text: 'philanthropy',
       // category: 1, //hard coded temp
       page: 5,
       sign: 'true',
@@ -255,9 +269,9 @@ function getMeetup() {
       meetUpResults.forEach(element => {
         // console.log(element);
         getData(element);
-        setTimeout(() => {
+        // setTimeout(() => {
           displayHTML(meetupHTML);
-        }, 1000);
+        // }, 1000);
       });
     } else {
       console.log("no events");
@@ -299,8 +313,8 @@ function getWeatherdata(data, x) {
 <img class="weatherIcon" src="${x}" alt="">
 <h5 class="weatherText">${data.weather[0].main}</h5>
 <h5 class="WeatherTemp">${data.main.temp}'°C'</h5>
-<h6 class="weatherDate">${data.dt_txt}</h6>
 </div>`;
+// <h6 class="weatherDate">${data.dt_txt}</h6>
 };
 
 function getCondition(wcData) {
@@ -345,7 +359,10 @@ function getWeather() {
   });
 };
 // ----------------------------------------------------------------------------
-function initMap() {
+function initMap(){
+console.log('something');
+}//
+function renderMap() {
   let mapCity = {
     lat: cityLat,
     lng: cityLon
@@ -361,4 +378,5 @@ function initMap() {
     position: mapCity,
     map: map
   });
-}
+};
+//

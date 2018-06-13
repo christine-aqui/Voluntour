@@ -23,8 +23,6 @@ body {
   align-items: center;
 }
 
-
-
 #main-video {
   position: absolute;
   /* top: 0;
@@ -140,4 +138,26 @@ body {
 
 .active {
   display: block;
+}
+
+#return-trips {
+  border: solid red 2px;
+  width: 200px;
+  height: 200px;
+}
+
+.rTrip {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.groupFire {
+  padding-left: 20px;
+}
+
+.orgImage {
+  max-width: 30vw;
+  min-width: 150px;
+  height: 15vh;
 }
