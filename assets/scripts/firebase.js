@@ -43,12 +43,82 @@ firebase.database().ref().orderByChild("dateAdded").limitToLast(2).on("child_add
 })
 
 // $(document).ready(function () {
-  function getSpanshot(){
-    var database = firebase.database();
-    var itineraryData;
+  function getSpanshot(uSel){
+    let database = firebase.database();
+    // let itineraryData;
     database.ref().on("value", function (snapshot) {
       itineraryData = snapshot.val();
-      console.log('itinerary Data: ',itineraryData);
+      // console.log('itinerary Data: ',itineraryData);
+      switch (uSel) {
+        case "Malawi":
+          console.log('itiner for malawi: ',itineraryData['-LDi3H-QccqyLjISx8zx']);
+          $()
+          break;
+          //
+        case "Jordan":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Nepal":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Fiji":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Hawaii":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Peru":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Cambodia":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "India":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Thailand":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Ecuador":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Kenya":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Senegal":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+        case "Philippines":
+
+          // console.log('City name: ', capCity);
+          break;
+          //
+      }
+
+
+      // return itineraryData;
     });
   }
 
