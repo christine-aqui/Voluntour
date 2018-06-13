@@ -14,7 +14,7 @@ body {
   overflow: hidden;
   background-color: transparent;
   margin: 0;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .landing-page--content {
@@ -23,12 +23,14 @@ body {
   align-items: center;
 }
 
+
+
 #main-video {
   position: absolute;
-  top: 0;
+  /* top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 0; */
   z-index: -100;
   min-width: 100%;
   min-height: 100%;
@@ -40,16 +42,17 @@ body {
   display: none;
 }
 
-.Boxed {
-  /* border: 2px solid green; */
-}
-
 .landingBlock {
   background-color: rgba(244, 209, 13, 0.3);
-  border-radius: 25px;
+  border-radius: 10px;
   /* opacity: 0.2; */
   color: white;
   text-align: center;
+  padding: 1%
+}
+
+#formBtn {
+  color: rgb(255, 254, 254);
 }
 
 .meetup_event {
@@ -57,6 +60,8 @@ body {
   padding: 20px;
   display: flex;
   /* border: 2px solid rgba(211, 211, 211, 0.5); */
+  /* max-height: 400px; */
+  overflow: hidden;
 }
 
 /* .meetup_event :hover{
@@ -92,24 +97,47 @@ body {
   margin: 5px;
 }
 
+.zeorMeets {
+  text-align: center;
+  padding: 1%;
+  /* margin: 1%; */
+}
+
 .weatherIcon {
   max-width: 150px;
   max-height: 150px;
 }
 
 #weather-info {
-  width: 80%;
+  width: 100%;
   display: flex;
-  margin: 1%;
-  padding: 20px;
+  justify-content: center;
+  /* margin: 1%; */
+  /* padding: 20px; */
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .cityWeather {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 2%;
+}
+
+#map {
+  height: 350px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+.inactive {
+  display: none;
+}
+
+.active {
+  display: block;
 }
