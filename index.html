@@ -83,7 +83,7 @@
 
 
   <div id="map"></div>
-  <div id="return-trips" class=""></div>
+  <div id="returnTrips" class=""></div>
   <!-- News Div -->
   <div id="news-list" class=""></div>
   <!-- Travel Advisory Div  -->
@@ -99,18 +99,25 @@
     <form action="" method="POST">
       <div>
         <div>
-          <label for="first-name">Full Name</label>
-          <input type="text" name="first_name" id="first-name" placeholder="First name" required>
-          <input type="text" name="last_name" id="last-name" placeholder="Last name" required>
+          <div>
+            <label for="first-name">Full Name</label>
+            <input type="text" class="form-control" name="first_name" id="first-name" placeholder="First name" required>
+          </div>
+          <div>
+            <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Last name" required>
+          </div>
         </div>
       </div>
       <div>
         <label for="mail">Email:</label>
-        <input type="email" name="user-mail" id="mail" placeholder="e.g. contact@example.com">
+        <input type="email" class="form-control" name="user-mail" id="mail" placeholder="e.g. contact@example.com">
       </div>
       <div>
         <label for="msg">Your message:</label>
-        <textarea name="user_message" id="msg" cols="50" rows="15"></textarea>
+        <textarea name="user_message" class="form-control" id="msg" cols="50" rows="15"></textarea>
+      </div>
+      <div>
+          <button type="button" class="btn btn-warning btn-block"><span id="contact-submit">Submit</span></button>
       </div>
     </form>
   </div>
