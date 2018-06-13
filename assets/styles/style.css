@@ -23,8 +23,6 @@ body {
   align-items: center;
 }
 
-
-
 #main-video {
   position: absolute;
   /* top: 0;
@@ -140,4 +138,10 @@ body {
 
 .active {
   display: block;
+}
+
+#return-trips {
+  border: solid red 2px;
+  width: 200px;
+  height: 200px;
 }
