@@ -41,67 +41,67 @@ $(document).ready(function () {
             cityInfo(malawi);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Jordan":
             cityInfo(jordan);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Nepal":
             cityInfo(nepal);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Fiji":
             cityInfo(fiji);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Hawaii":
             cityInfo(hawaii);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Peru":
             cityInfo(peru);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Cambodia":
             cityInfo(cambodia);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "India":
             cityInfo(india);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Thailand":
             cityInfo(thailand);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Ecuador":
             cityInfo(ecuador);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Kenya":
             cityInfo(kenya);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Senegal":
             cityInfo(senegal);
             console.log('City name: ', capCity);
             break;
-            //
+          //
           case "Philippines":
             cityInfo(philippines);
             console.log('City name: ', capCity);
             break;
-            //
+          //
         }
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
@@ -147,6 +147,31 @@ $(document).ready(function () {
             // results[i].event_url
 
           });
+          // Ahmed's Code Here
+          // News Api
+          let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
+          let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`;
+          $.ajax({
+            url: newsURL,
+            method: 'GET',
+            language: 'en',
+            sortBy: 'relevancy',
+          }).done(function (newsResponse) {
+            console.log('news: ', newsResponse);
+          });
+
+          // advisoryAPI
+          let advisoryKey = '7csv43cjcwbtnfyspr6n6gjd';
+          let advisoryURL = `https://api.tugo.com/v1/travelsafe/countries/${cityCode}`;
+          $.ajax({
+            url: advisoryURL,
+            method: 'GET',
+            headers: {
+              "X-Auth-API-Key": advisoryKey
+            }
+          }).done(function (advisoryResponse) {
+            console.log('advisory: ', advisoryResponse);
+          });
           //
         } else {
           console.log("notting");
@@ -163,31 +188,8 @@ $(document).ready(function () {
       //
       //
       //
-      // Ahmed's Code Here
-      // News Api
-      let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
-      let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`;
-      $.ajax({
-        url: newsURL,
-        method: 'GET',
-        language: 'en',
-        sortBy: 'relevancy',
-      }).done(function (newsResponse) {
-        console.log('news: ', newsResponse);
-      });
 
-      // advisoryAPI
-      let advisoryKey = '7csv43cjcwbtnfyspr6n6gjd';
-      let advisoryURL = `https://api.tugo.com/v1/travelsafe/countries/${cityCode}`;
-      $.ajax({
-        url: advisoryURL,
-        method: 'GET',
-        headers: {
-          "X-Auth-API-Key": advisoryKey
-        }
-      }).done(function (advisoryResponse) {
-        console.log('advisory: ', advisoryResponse);
-      });
+
       //
       //
       //
