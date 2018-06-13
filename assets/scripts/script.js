@@ -42,7 +42,12 @@ let wCondition = '';
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
-let firebaseItems;
+let firebaseItems = `
+<div class='returnTrip>
+<h3>Organization:</h3>
+<h4>Region:</h4>
+<h4>Charity Type: </h4>
+</div>`;
 // ---------------------------------------------------------------------------
 
 
@@ -122,7 +127,7 @@ $(document).ready(function () {
         //
         //
         // usama's Code Here
-        initMap();
+        renderMap();
         //
         //
         //
@@ -240,9 +245,9 @@ function getMeetup() {
       meetUpResults.forEach(element => {
         // console.log(element);
         getData(element);
-        setTimeout(() => {
+        // setTimeout(() => {
           displayHTML(meetupHTML);
-        }, 1000);
+        // }, 1000);
       });
     } else {
       console.log("no events");
@@ -330,7 +335,10 @@ function getWeather() {
   });
 };
 // ----------------------------------------------------------------------------
-function initMap() {
+function initMap(){
+console.log('something');
+}//
+function renderMap() {
   let mapCity = {
     lat: cityLat,
     lng: cityLon
@@ -346,4 +354,13 @@ function initMap() {
     position: mapCity,
     map: map
   });
+}
+function trips(select){
+  if(select)
+return firebaseItems = `
+<div class='returnTrip>
+<h3>Organization:</h3>
+<h4>Region:</h4>
+<h4>Charity Type: </h4>
+</div>`;
 }
