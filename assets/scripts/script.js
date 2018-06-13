@@ -50,7 +50,7 @@ let wText = [];
 // <h4>Charity Type: </h4>
 // </div>`;
 // let firebaseDisplay = `
-//       <div class='rTrip>
+//       <div class='rTrip'>
 //       <h3>Organization: ${fireOrg}</h3>
 //       <h4>Region: ${fireRegion}</h4>
 //       <h4>Charity Type: ${fireType}</h4>
@@ -90,26 +90,17 @@ $(document).ready(function () {
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
-        // call database
-        // $(document).ready(function () {
-          // var database = firebase.database();
-          // var itineraryData;
-          // database.ref().on("value", function (snapshot) {
-            //   itineraryData = snapshot.val();
-            //   console.log('The itinerary Data: ',itineraryData);
-            // });
-            // });
             //on button press remove any existing content from before.
             $(".cityWeather").remove();
             $(".meetup_event").remove();
             $(".zeorMeets").remove();
+            $(".rTrip").remove();
             //
             //
             userSelected = $('#region-list').val();
             console.log('user selected: ', userSelected);
             $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
             uSelected(userSelected);
-            // getSpanshot(userSelected);
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
           getMeetup();

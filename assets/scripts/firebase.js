@@ -14,6 +14,23 @@
   var start = "";
   var type = "";
   var itinerary = "";
+  let fireOrg = '';
+  let fireRegion = '';
+  let fireType = '';
+  let itineraryMalawu = '';
+  let itineraryJordan = '';
+  let itineraryNepal = '';
+  let itineraryFiji = '';
+  let itineraryHawaii = '';
+  let itineraryPeru = '';
+  let itineraryCambodia = '';
+  let itineraryIndia = '';
+  let itineraryThailand = '';
+  let itineraryEcuador = '';
+  let itineraryKenya = '';
+  let itinerarySenegal = '';
+  let itineraryPhilippines = '';
+  let itineraryImage = '';
 
 
   $("#add-tour").on("click", function () {
@@ -41,38 +58,19 @@
     $("#itinerary-display").html(snapshot.val().itinerary);
     console.log("test")
   })
-
-  let fireOrg = '';
-  let fireRegion = '';
-  let fireType = '';
-  let itineraryMalawu = '';
-  let itineraryJordan = '';
-  let itineraryNepal = '';
-  let itineraryFiji = '';
-  let itineraryHawaii = '';
-  let itineraryPeru = '';
-  let itineraryCambodia = '';
-  let itineraryIndia = '';
-  let itineraryThailand = '';
-  let itineraryEcuador = '';
-  let itineraryKenya = '';
-  let itinerarySenegal = '';
-  let itineraryPhilippines = '';
   //
-  // $(document).ready(function()  {
-
   function getSpanshot(uSel) {
     let database = firebase.database();
-    // let itineraryData;
     database.ref().on("value", function (snapshot) {
       itineraryData = snapshot.val();
-      console.log('itiner for : ', itineraryData,'uSel: ', uSel );
+      console.log('itiner for : ', itineraryData, 'uSel: ', uSel);
       switch (uSel) {
         case "Malawi":
           itineraryMalawu = itineraryData['-LDi3H-QccqyLjISx8zx'];
           fireOrg = itineraryMalawu.organization;
           fireRegion = itineraryMalawu.region;
           fireType = itineraryMalawu.type;
+          itineraryImage = './assets/images/Habitat_for_humanity.png';
           console.log('itiner for malawi: ', itineraryMalawu);
           break;
           //
@@ -81,7 +79,7 @@
           fireOrg = itineraryJordan.organization;
           fireRegion = itineraryJordan.region;
           fireType = itineraryJordan.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/Habitat_for_humanity.png';
           break;
           //
         case "Nepal":
@@ -89,7 +87,7 @@
           fireOrg = itineraryNepal.organization;
           fireRegion = itineraryNepal.region;
           fireType = itineraryNepal.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/Habitat_for_humanity.png';
           break;
           //
         case "Fiji":
@@ -97,7 +95,7 @@
           fireOrg = itineraryFiji.organization;
           fireRegion = itineraryFiji.region;
           fireType = itineraryFiji.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/GVI-Logo.png';
           break;
           //
         case "Hawaii":
@@ -105,7 +103,7 @@
           fireOrg = itineraryHawaii.organization;
           fireRegion = itineraryHawaii.region;
           fireType = itineraryHawaii.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/Habitat_for_humanity.png';
           break;
           //
         case "Peru":
@@ -113,7 +111,7 @@
           fireOrg = itineraryPeru.organization;
           fireRegion = itineraryPeru.region;
           fireType = itineraryPeru.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/GVI-Logo.png';
           break;
           //
         case "Cambodia":
@@ -121,7 +119,7 @@
           fireOrg = itineraryCambodia.organization;
           fireRegion = itineraryCambodia.region;
           fireType = itineraryCambodia.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/GVI-Logo.png';
           break;
           //
         case "India":
@@ -130,8 +128,7 @@
           fireRegion = itineraryIndia.region;
           fireType = itineraryIndia.type;
           console.log('itiner for malawi: ', itineraryIndia);
-
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/GVI-Logo.png';
           break;
           //
         case "Thailand":
@@ -139,7 +136,7 @@
           fireOrg = itineraryThailand.organization;
           fireRegion = itineraryThailand.region;
           fireType = itineraryThailand.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/GVI-Logo.png';
           break;
           //
         case "Ecuador":
@@ -147,7 +144,7 @@
           fireOrg = itineraryEcuador.organization;
           fireRegion = itineraryEcuador.region;
           fireType = itineraryEcuador.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/ME_to_WE.png';
           break;
           //
         case "Kenya":
@@ -155,7 +152,7 @@
           fireOrg = itineraryKenya.organization;
           fireRegion = itineraryKenya.region;
           fireType = itineraryKenya.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/ME_to_WE.png';
           break;
           //
         case "Senegal":
@@ -163,7 +160,7 @@
           fireOrg = itinerarySenegal.organization;
           fireRegion = itinerarySenegal.region;
           fireType = itinerarySenegal.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/projects-abroad.png';
           break;
           //
         case "Philippines":
@@ -171,39 +168,24 @@
           fireOrg = itineraryPhilippines.organization;
           fireRegion = itineraryPhilippines.region;
           fireType = itineraryPhilippines.type;
-          // console.log('City name: ', capCity);
+          itineraryImage = './assets/images/projects-abroad.png';
           break;
           //
       }
-
       $('#returetrips').append(firebaseDisplay());
-
-
-
-      // $('#returetrips').append(`
-      // <div class='rTrip>
-      // <h3>Organization: ${fireOrg}</h3>
-      // <h4>Region: ${fireRegion}</h4>
-      // <h4>Charity Type: ${fireType}</h4>
-      // </div>`);
     });
     // return fireOrg , fireRegion, fireType;
   };
-
-
-  // document.querySelector('#formBtn').addEventListener('click', function (e){
-    // getSpanshot(userSelected);
-    // $('#returetrips').append(firebaseDisplay);
-  // });
-
-  // });
-
-  function firebaseDisplay(){
+  //
+  function firebaseDisplay() {
     return `
-      <div class='rTrip'>
+      <div class='rTrip hvr-underline-from-center'>
+        <img class="orgImage" src="${itineraryImage}" alt="">
+        <div class="groupFire">
         <h3>Organization: ${fireOrg}</h3>
         <h4>Region: ${fireRegion}</h4>
         <h4>Charity Type: ${fireType}</h4>
+        </div>
       </div>
     `;
-  }
+  };
