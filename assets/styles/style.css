@@ -149,15 +149,19 @@ body {
 .rTrip {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 20px;
   margin: 10px;
 }
 
 .groupFire {
-  padding-left: 20px;
 }
 
 .orgImage {
   max-width: 30vw;
   min-width: 150px;
   height: 15vh;
+}
+
+#contact-submit {
+  font-weight: bold;
 }
