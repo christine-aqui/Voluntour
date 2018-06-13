@@ -47,7 +47,19 @@ let firebaseItems = `
 <h3>Organization:</h3>
 <h4>Region:</h4>
 <h4>Charity Type: </h4>
-</div>`;
+</div>`;;
+let advisoryHTML = `
+<div id="advisory-body">
+<h5 class="advisory-titles">General Travel Advisory</h5>
+<div id="general advisory"></div>
+<h5 class="advisory-titles">Health Advisory</h5>
+<div id="health advisory"></div>
+</div>
+`;
+let newsHTML = `
+<div id="news-list" class="Boxed">
+</div>
+`;
 // ---------------------------------------------------------------------------
 
 
@@ -65,6 +77,7 @@ $(document).ready(function () {
     //
     setTimeout(() => { // start code
       $('.container').show();
+      $('#map').addClass('inactive')
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
@@ -91,6 +104,8 @@ $(document).ready(function () {
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
           getMeetup();
+          $('#map').removeClass('inactive');
+          $('#map').addClass('active');
         } else {
           console.log("No country selected");
         } // end of Meetup api
@@ -110,7 +125,7 @@ $(document).ready(function () {
           language: 'en',
           sortBy: 'relevancy',
         }).done(function (newsResponse) {
-          // console.log('news: ', newsResponse);
+          console.log('news: ', newsResponse);
         });
         // advisoryAPI
         let advisoryKey = '7csv43cjcwbtnfyspr6n6gjd';
@@ -122,7 +137,7 @@ $(document).ready(function () {
             "X-Auth-API-Key": advisoryKey
           }
         }).done(function (advisoryResponse) {
-          // console.log('advisory: ', advisoryResponse);
+          console.log('advisory: ', advisoryResponse);
         });
         //
         //
@@ -296,7 +311,7 @@ function getWeatherdata(data, x) {
 function getCondition(wcData) {
   switch (wcData.weather[0].main) {
     case 'Clouds':
-      wCondition = './assets/images/Cloudy.png';
+      wCondition = '../images/Cloudy.png';
       // console.log(wCondition);
       break;
     case 'Rain':
