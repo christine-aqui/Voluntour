@@ -47,10 +47,11 @@ let advisoryGeneral = '';
 let advisoryHealth = '';
 let advisoryHTML = `
 <div id="advisory-body">
-<h5 class="advisory-titles">General Travel Advisory</h5>
-<div id="general advisory"><p></p></div>
-<h5 class="advisory-titles">Health Advisory</h5>
-<div id="health advisory"><p></p>/div>
+<div class="media">
+<img class="mr-3" src="assets/images/warning.png" alt="Warning Sign">  <div class="media-body">
+    <h5 class="mt-0">Travel Advisory</h5>
+    <span></span>
+  </div>
 </div>
 `;
 let newsHTML = '';
@@ -290,10 +291,14 @@ function getAdvisory() {
     let advisoryHealth = advisoryResponse.health.description;
     console.log(advisoryGeneral);
     let advisoryHTML = `
-<div id="advisory-body">
-<h5 class="advisory-titles">General Travel Advisory</h5>
-<div id="general advisory"><p>${advisoryGeneral}</p></div>
-</div>`;
+    <div id="advisory-body">
+    <h4>Canadian Travel Advisory for ${userSelected}</h4>
+    <div class="media border border-danger">
+    <img class="mr-3" src="assets/images/warning.png" alt="Warning Sign">  <div class="media-body">
+        <h5 class="mt-0">Travel Advisory</h5>
+        <span>${advisoryGeneral}</span>
+      </div>
+    </div>`;
     $('#travel-advisory').empty();
     $('#travel-advisory').append(advisoryHTML);
     console.log(advisoryHealth);
@@ -324,38 +329,29 @@ function getNews() {
     let newsTitle2 = newsResponse.articles[2].title;
     let newsURL2 = newsResponse.articles[2].url;
     let newsHTML = `
-    <div class="row">
-    <div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${newsImage0}" alt="News Image">
-  <div class="card-body">
-    <h5 class="card-title">${newsSource0}</h5>
-    <p class="card-text">${newsTitle0}</p>
-    <a href="${newsURL0}" class="btn btn-warning" target="_blank">Read this article</a>
+    <h4>Here are some news reports from ${userSelected}</h4>
+    <div class="media border border-warning">
+  <img class="mr-3" id="news-image"src="${newsImage0}" alt="News Image">
+  <div class="media-body">
+    <h5 class="mt-0">${newsSource0}</h5>
+    <a href="${newsURL0}"><span>${newsTitle0}</span></a>
   </div>
 </div>
-</div>
-<div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${newsImage1}" alt="News Image">
-  <div class="card-body">
-    <h5 class="card-title">${newsSource1}</h5>
-    <p class="card-text">${newsTitle1}</p>
-    <a href="${newsURL1}" class="btn btn-warning" target="_blank">Read this article</a>
-  </div>
+<div class="media border border-warning">
+<img class="mr-3" id="news-image"src="${newsImage1}" alt="News Image">
+<div class="media-body">
+  <h5 class="mt-0">${newsSource1}</h5>
+  <a href="${newsURL1}"><span>${newsTitle1}</span></a>
 </div>
 </div>
-<div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${newsImage2}" alt="News Image">
-  <div class="card-body">
-    <h5 class="card-title">${newsSource2}</h5>
-    <p class="card-text">${newsTitle2}</p>
-    <a href="${newsURL2}" class="btn btn-warning" target="_blank">Read this article</a>
-  </div>
+<div class="media border border-warning">
+<img class="mr-3" id="news-image"src="${newsImage2}" alt="News Image">
+<div class="media-body">
+  <h5 class="mt-0">${newsSource2}</h5>
+  <a href="${newsURL2}"><span>${newsTitle2}</span></a>
 </div>
-</div1
-</div>`;
+</div>
+`;
     $('#news-list').empty();
     $('#news-list').append(newsHTML);
   });

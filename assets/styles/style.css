@@ -2,7 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #E0A800;
+  background-color: whitesmoke;
 }
 
 .jumbotron {
@@ -15,7 +15,6 @@ body {
   overflow: hidden;
   background-color: transparent;
   margin: 0;
-  /* margin-bottom: 20px; */
 }
 
 .landing-page--content {
@@ -26,10 +25,6 @@ body {
 
 #main-video {
   position: absolute;
-  /* top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; */
   z-index: -100;
   min-width: 100%;
   min-height: 100%;
@@ -37,14 +32,9 @@ body {
   height: auto;
 }
 
-/* #return-trips {
-  display: none;
-} */
-
 .landingBlock {
   background-color: rgba(244, 209, 13, 0.3);
   border-radius: 10px;
-  /* opacity: 0.2; */
   color: white;
   text-align: center;
   padding: 1%;
@@ -66,21 +56,15 @@ body {
   border-color: gold;
 }
 
+h4 {
+  font-family: 'Courgette', serif;
+}
+
 .meetup_event {
   margin: 2%;
   padding: 20px;
   display: flex;
-  /* max-height: 40%; */
-  /* border: 2px solid rgba(211, 211, 211, 0.5); */
-  /* max-height: 400px; */
   overflow: hidden;
-}
-
-/*  */
-
-.meetup_desciption,
-p {
-  display: none;
 }
 
 #cardP {
@@ -91,8 +75,6 @@ p {
 p:nth-child(1) {
   display: inherit;
 }
-
-/*  */
 
 .group1 {
   max-width: 20%;
@@ -119,14 +101,12 @@ p:nth-child(1) {
 }
 
 .meetup_image {
-  /* padding: 5px; */
   margin: 5px;
 }
 
 .zeorMeets {
   text-align: center;
   padding: 1%;
-  /* margin: 1%; */
 }
 
 .weatherIcon {
@@ -138,8 +118,6 @@ p:nth-child(1) {
   width: 100%;
   display: flex;
   justify-content: center;
-  /* margin: 1%; */
-  /* padding: 20px; */
   flex-wrap: wrap;
   text-align: center;
   background-color: whitesmoke;
@@ -147,7 +125,6 @@ p:nth-child(1) {
 
 .cityWeather {
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -156,9 +133,7 @@ p:nth-child(1) {
 
 #map {
   height: 50vh;
-  /* The height is 400 pixels */
   width: 100%;
-  /* The width is the width of the web page */
 }
 
 .inactive {
@@ -183,8 +158,6 @@ p:nth-child(1) {
   margin: 10px;
 }
 
-/* .groupFire {} */
-
 .orgImage {
   max-width: 30vw;
   min-width: 150px;
@@ -200,6 +173,17 @@ p:nth-child(1) {
   font-weight: bold;
 }
 
+
+#news-image {
+  width: 10%;
+  height: 10%;
+}
+
+.media {
+  padding: 1rem;
+  width: 70vw;
+  margin: 0.5rem;
+}
 .wrong-input {
   border-color: red;
 }
@@ -215,10 +199,6 @@ p:nth-child(1) {
 /*  */
 
 @media (max-width: 667px) {
-  /*  */
-  /* body {
-    background-color: lightred;
-  } */
   .cityWeather {
     display: flex;
     flex-direction: column;
