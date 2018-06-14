@@ -273,8 +273,6 @@ function getAdvisory() {
 <div id="advisory-body">
 <h5 class="advisory-titles">General Travel Advisory</h5>
 <div id="general advisory"><p>${advisoryGeneral}</p></div>
-<h5 class="advisory-titles">Health Advisory</h5>
-<div id="health advisory"><p>${advisoryHealth}</p>/div>
 </div>`;
     $('#travel-advisory').empty();
     $('#travel-advisory').append(advisoryHTML);
