@@ -102,6 +102,7 @@ $(document).ready(function () {
         getWeather();
         renderMap();
         getAdvisory();
+        getNews();
       });
     }, 400);
   }, 500);
@@ -275,22 +276,70 @@ function getAdvisory() {
 <h5 class="advisory-titles">Health Advisory</h5>
 <div id="health advisory"><p>${advisoryHealth}</p>/div>
 </div>`;
-
-$('#travel-advisory').append(advisoryHTML);
+    $('#travel-advisory').empty();
+    $('#travel-advisory').append(advisoryHTML);
     console.log(advisoryHealth);
   });
 }
 
 function getNews() {
   let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
-  let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`;
+  let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&language=en&sortBy=relevancy&sources=cbc-news,bbc-news,cnn&apikey=${newsKey}`;
   $.ajax({
     url: newsURL,
     method: 'GET',
     language: 'en',
-    sortBy: 'relevancy',
+    sortBy: 'publishedAt',
+    sources: 'abc-news',
   }).done(function (newsResponse) {
     console.log('news: ', newsResponse);
+    let newsSource0 = newsResponse.articles[0].source.name;
+    let newsImage0 = newsResponse.articles[0].urlToImage;
+    let newsTitle0 = newsResponse.articles[0].title;
+    let newsURL0 = newsResponse.articles[0].url;
+    let newsSource1 = newsResponse.articles[1].source.name;
+    let newsImage1 = newsResponse.articles[1].urlToImage;
+    let newsTitle1 = newsResponse.articles[1].title;
+    let newsURL1 = newsResponse.articles[1].url;
+    let newsSource2 = newsResponse.articles[2].source.name;
+    let newsImage2 = newsResponse.articles[2].urlToImage;
+    let newsTitle2 = newsResponse.articles[2].title;
+    let newsURL2 = newsResponse.articles[2].url;
+    let newsHTML = `
+    <div class="row">
+    <div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${newsImage0}" alt="News Image">
+  <div class="card-body">
+    <h5 class="card-title">${newsSource0}</h5>
+    <p class="card-text">${newsTitle0}</p>
+    <a href="${newsURL0}" class="btn btn-warning" target="_blank">Read this article</a>
+  </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${newsImage1}" alt="News Image">
+  <div class="card-body">
+    <h5 class="card-title">${newsSource1}</h5>
+    <p class="card-text">${newsTitle1}</p>
+    <a href="${newsURL1}" class="btn btn-warning" target="_blank">Read this article</a>
+  </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${newsImage2}" alt="News Image">
+  <div class="card-body">
+    <h5 class="card-title">${newsSource2}</h5>
+    <p class="card-text">${newsTitle2}</p>
+    <a href="${newsURL2}" class="btn btn-warning" target="_blank">Read this article</a>
+  </div>
+</div>
+</div1
+</div>`;
+    $('#news-list').empty();
+    $('#news-list').append(newsHTML);
   });
 }
 

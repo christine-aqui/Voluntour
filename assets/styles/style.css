@@ -65,9 +65,12 @@ body {
 
 /*  */
 
-.meetup_desciption,
-p {
+.meetup_desciption, p {
   display: none;
+}
+
+#cardP {
+  display: block;
 }
 
 .meetup_desciption,
