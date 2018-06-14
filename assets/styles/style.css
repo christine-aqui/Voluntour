@@ -67,10 +67,6 @@ h4 {
   overflow: hidden;
 }
 
-.meetup_desciption, p {
-  display: none;
-}
-
 #cardP {
   display: block;
 }
@@ -177,6 +173,7 @@ p:nth-child(1) {
   font-weight: bold;
 }
 
+
 #news-image {
   width: 10%;
   height: 10%;
@@ -186,6 +183,17 @@ p:nth-child(1) {
   padding: 1rem;
   width: 70vw;
   margin: 0.5rem;
+}
+.wrong-input {
+  border-color: red;
+}
+
+.right-input {
+  border-color: green;
+}
+
+#mail:focus {
+  outline: none;
 }
 
 /*  */
