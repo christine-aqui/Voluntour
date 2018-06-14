@@ -36,9 +36,9 @@ body {
   height: auto;
 }
 
-#return-trips {
+/* #return-trips {
   display: none;
-}
+} */
 
 .landingBlock {
   background-color: rgba(244, 209, 13, 0.3);
@@ -57,14 +57,25 @@ body {
   margin: 2%;
   padding: 20px;
   display: flex;
+  /* max-height: 40%; */
   /* border: 2px solid rgba(211, 211, 211, 0.5); */
   /* max-height: 400px; */
   overflow: hidden;
 }
 
-/* .meetup_event :hover{
+/*  */
 
-} */
+.meetup_desciption,
+p {
+  display: none;
+}
+
+.meetup_desciption,
+p:nth-child(1) {
+  display: inherit;
+}
+
+/*  */
 
 .group1 {
   max-width: 20%;
@@ -140,21 +151,21 @@ body {
   display: block;
 }
 
-#return-trips {
-  border: solid red 2px;
-  width: 200px;
-  height: 200px;
+#returnTrips {
+  width: 60vw;
+  margin: 1%;
 }
 
 .rTrip {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  widows: 80vw;
   padding-left: 20px;
   margin: 10px;
 }
 
-.groupFire {
-}
+/* .groupFire {} */
 
 .orgImage {
   max-width: 30vw;
@@ -164,4 +175,17 @@ body {
 
 #contact-submit {
   font-weight: bold;
+}
+
+/*  */
+
+@media (min-width: 667px) {
+  /*  */
+  body {
+    background-color: lightred;
+  }
+  .cityWeather {
+    display: flex;
+    flex-direction: column;
+  }
 }

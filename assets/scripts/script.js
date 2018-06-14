@@ -43,19 +43,7 @@ let wCondition = '';
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
-// let firebaseItems = `
-// <div class='returnTrip>
-// <h3>Organization:</h3>
-// <h4>Region:</h4>
-// <h4>Charity Type: </h4>
-// </div>`;
-// let firebaseDisplay = `
-//       <div class='rTrip'>
-//       <h3>Organization: ${fireOrg}</h3>
-//       <h4>Region: ${fireRegion}</h4>
-//       <h4>Charity Type: ${fireType}</h4>
-//       </div>`;
-//
+
 let advisoryHTML = `
 <div id="advisory-body">
 <h5 class="advisory-titles">General Travel Advisory</h5>
@@ -69,8 +57,6 @@ let newsHTML = `
 </div>
 `;
 // ---------------------------------------------------------------------------
-
-
 //
 //
 $('#logo').hide();
@@ -86,7 +72,7 @@ $(document).ready(function () {
     setTimeout(() => { // start code
       $('.container').show();
       $('#map').addClass('inactive');
-      $('#returetrips').addClass('inactive');
+      $('#returnTrips').addClass('inactive');
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
@@ -105,12 +91,11 @@ $(document).ready(function () {
         if (userSelected != "Country") {
           getMeetup();
           getSpanshot(userSelected);
-          $('#returetrips').removeClass('inactive');
-          $('#returetrips').addClass('active');
+          $('#returnTrips').removeClass('inactive');
+          $('#returnTrips').addClass('active');
           $('#map').removeClass('inactive');
           $('#map').addClass('active');
           //
-          // $('#returetrips').append(firebaseDisplay);
         } else {
           console.log("No country selected");
         } // end of Meetup api
