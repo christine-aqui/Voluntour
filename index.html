@@ -19,7 +19,7 @@
     crossorigin="anonymous">
   <!-- Google font & firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-  <link rel="stylesheet" href="#">
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Titillium+Web" rel="stylesheet">
   <!-- main style sheet -->
   <link rel="stylesheet" href="./assets/styles/style.css">
   <!-- Animation -->
@@ -48,7 +48,7 @@
           </div>
           <div class="landingBlock">
             <h3 class="title is-2" id="highlight">
-              <span>Tour the world. Make it a better place!</span>
+              <span id="tagline">Tour the world. Make it a better place!</span>
             </h3>
             <!--  -->
             <form id="main-form" class="">
@@ -80,32 +80,35 @@
       </div>
     </section>
   </div>
+  <div id="map">
 
-  <!-- Responsive Container -->
-  <div class="container-fluid">
+  </div>
+  <div id="returnTrips" class="trips">
 
-    <div class="row">
-      <!-- News and Travel Column -->
-      <div class="col-sm card">
-        <!-- News Div -->
-        <div id="news-list" class=""></div>
-        <!-- Travel Advisory Div  -->
-        <div id="travel-advisory" class=""></div>
-      </div>
-      <!-- Map Column -->
-      <div class="col-sm">
-        <div id="map"></div>
-      </div>
-    </div>
+  </div>
 
+  <div id="travel-advisory" class="currentAdvisory">
+
+  </div>
+
+
+  <div id="weather-info" class="weather">
+
+<<<<<<< HEAD
     <div id="returnTrips" class="card"></div>
+=======
+  </div>
 
-    <!--Weather Info Div  -->
-    <div id="weather-info" class=""></div>
-    <!--Meetups Div  -->
-    <div id="meetup-events" class=""></div>
-    <!-- Contact Us Div -->
-    <div id="contact-form" class="">
+  <div id="news-list" class="news">
+
+  </div>
+  <!-- <div id="meetup-events" class="">
+>>>>>>> 5d403b408ad871c31fe506bc9dc2b4410fa6d921
+
+  </div> -->
+  <!-- Contact Us Div -->
+  <div class="card" id="form-style">
+    <div id="contact-form" class="card-body">
       <h2>Contact Us</h2>
       <h3>How can we help you?</h3>
       <form action="" method="POST">
@@ -137,6 +140,13 @@
     </div>
   </div>
   </div>
+  </div>
+
+
+
+
+
+
   <!-- Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>

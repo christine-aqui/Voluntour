@@ -43,19 +43,17 @@ let wCondition = '';
 let weatherCycle = [];
 let wIcon = [];
 let wText = [];
-
+let advisoryGeneral = '';
+let advisoryHealth = '';
 let advisoryHTML = `
 <div id="advisory-body">
 <h5 class="advisory-titles">General Travel Advisory</h5>
-<div id="general advisory"></div>
+<div id="general advisory"><p></p></div>
 <h5 class="advisory-titles">Health Advisory</h5>
-<div id="health advisory"></div>
+<div id="health advisory"><p></p>/div>
 </div>
 `;
-let newsHTML = `
-<div id="news-list" class="Boxed">
-</div>
-`;
+let newsHTML = '';
 // ---------------------------------------------------------------------------
 //
 //
@@ -76,17 +74,17 @@ $(document).ready(function () {
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
-            //on button press remove any existing content from before.
-            $(".cityWeather").remove();
-            $(".meetup_event").remove();
-            $(".zeorMeets").remove();
-            $(".rTrip").remove();
-            //
-            //
-            userSelected = $('#region-list').val();
-            console.log('user selected: ', userSelected);
-            $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
-            uSelected(userSelected);
+        //on button press remove any existing content from before.
+        $(".cityWeather").remove();
+        $(".meetup_event").remove();
+        $(".zeorMeets").remove();
+        $(".rTrip").remove();
+        //
+        //
+        userSelected = $('#region-list').val();
+        console.log('user selected: ', userSelected);
+        $('#windowTitle').text(`Voluntour - ${userSelected}`); // updtes the title bar =]
+        uSelected(userSelected);
         // checks to see if country is selected. if no country is selected then do notting
         if (userSelected != "Country") {
           getMeetup();
@@ -95,47 +93,16 @@ $(document).ready(function () {
           $('#returnTrips').addClass('active');
           $('#map').removeClass('inactive');
           $('#map').addClass('active');
+          $('#contact-form').removeClass('inactive');
+          $('#contact-form').addClass('active');
           //
         } else {
           console.log("No country selected");
         } // end of Meetup api
-        //
-        //
-        // Lisa's Code Here =]
         getWeather();
-        //
-        //
-        // admeh's Code Here
-        // News Api
-        let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
-        let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&apikey=${newsKey}`;
-        $.ajax({
-          url: newsURL,
-          method: 'GET',
-          language: 'en',
-          sortBy: 'relevancy',
-        }).done(function (newsResponse) {
-          console.log('news: ', newsResponse);
-        });
-        // advisoryAPI
-        let advisoryKey = '7csv43cjcwbtnfyspr6n6gjd';
-        let advisoryURL = `https://api.tugo.com/v1/travelsafe/countries/${cityCode}`;
-        $.ajax({
-          url: advisoryURL,
-          method: 'GET',
-          headers: {
-            "X-Auth-API-Key": advisoryKey
-          }
-        }).done(function (advisoryResponse) {
-          console.log('advisory: ', advisoryResponse);
-        });
-        //
-        //
-        // usama's Code Here
         renderMap();
-        //
-        //
-        //
+        getAdvisory();
+        getNews();
       });
     }, 400);
   }, 500);
@@ -160,67 +127,67 @@ function uSelected(uSel) {
       // console.log(itineraryData);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Jordan":
       cityInfo(jordan);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Nepal":
       cityInfo(nepal);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Fiji":
       cityInfo(fiji);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Hawaii":
       cityInfo(hawaii);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Peru":
       cityInfo(peru);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Cambodia":
       cityInfo(cambodia);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "India":
       cityInfo(india);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Thailand":
       cityInfo(thailand);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Ecuador":
       cityInfo(ecuador);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Kenya":
       cityInfo(kenya);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Senegal":
       cityInfo(senegal);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
     case "Philippines":
       cityInfo(philippines);
       // console.log('City name: ', capCity);
       break;
-      //
+    //
   }
 };
 // -----------------------------------------------------------------------------
@@ -255,7 +222,7 @@ function getMeetup() {
         // console.log(element);
         getData(element);
         // setTimeout(() => {
-          displayHTML(meetupHTML);
+        displayHTML(meetupHTML);
         // }, 1000);
       });
     } else {
@@ -287,6 +254,94 @@ function getData(data) {
     </div>`;
 };
 // -----------------------------------------------------------------------------
+// advisoryAPI
+function getAdvisory() {
+  let advisoryKey = '7csv43cjcwbtnfyspr6n6gjd';
+  let advisoryURL = `https://api.tugo.com/v1/travelsafe/countries/${cityCode}`;
+  $.ajax({
+    url: advisoryURL,
+    method: 'GET',
+    headers: {
+      "X-Auth-API-Key": advisoryKey
+    }
+  }).done(function (advisoryResponse) {
+    console.log('advisory: ', advisoryResponse);
+    let advisoryGeneral = advisoryResponse.advisories.description;
+    let advisoryHealth = advisoryResponse.health.description;
+    console.log(advisoryGeneral);
+    let advisoryHTML = `
+<div id="advisory-body">
+<h5 class="advisory-titles">General Travel Advisory</h5>
+<div id="general advisory"><p>${advisoryGeneral}</p></div>
+</div>`;
+    $('#travel-advisory').empty();
+    $('#travel-advisory').append(advisoryHTML);
+    console.log(advisoryHealth);
+  });
+}
+
+function getNews() {
+  let newsKey = 'd91452c6c0c0450dbd402a43d19d7905';
+  let newsURL = `https://newsapi.org/v2/everything?q=${userSelected}&language=en&sortBy=relevancy&sources=cbc-news,bbc-news,cnn&apikey=${newsKey}`;
+  $.ajax({
+    url: newsURL,
+    method: 'GET',
+    language: 'en',
+    sortBy: 'publishedAt',
+    sources: 'abc-news',
+  }).done(function (newsResponse) {
+    console.log('news: ', newsResponse);
+    let newsSource0 = newsResponse.articles[0].source.name;
+    let newsImage0 = newsResponse.articles[0].urlToImage;
+    let newsTitle0 = newsResponse.articles[0].title;
+    let newsURL0 = newsResponse.articles[0].url;
+    let newsSource1 = newsResponse.articles[1].source.name;
+    let newsImage1 = newsResponse.articles[1].urlToImage;
+    let newsTitle1 = newsResponse.articles[1].title;
+    let newsURL1 = newsResponse.articles[1].url;
+    let newsSource2 = newsResponse.articles[2].source.name;
+    let newsImage2 = newsResponse.articles[2].urlToImage;
+    let newsTitle2 = newsResponse.articles[2].title;
+    let newsURL2 = newsResponse.articles[2].url;
+    let newsHTML = `
+    <div class="row">
+    <div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${newsImage0}" alt="News Image">
+  <div class="card-body">
+    <h5 class="card-title">${newsSource0}</h5>
+    <p class="card-text">${newsTitle0}</p>
+    <a href="${newsURL0}" class="btn btn-warning" target="_blank">Read this article</a>
+  </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${newsImage1}" alt="News Image">
+  <div class="card-body">
+    <h5 class="card-title">${newsSource1}</h5>
+    <p class="card-text">${newsTitle1}</p>
+    <a href="${newsURL1}" class="btn btn-warning" target="_blank">Read this article</a>
+  </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${newsImage2}" alt="News Image">
+  <div class="card-body">
+    <h5 class="card-title">${newsSource2}</h5>
+    <p class="card-text">${newsTitle2}</p>
+    <a href="${newsURL2}" class="btn btn-warning" target="_blank">Read this article</a>
+  </div>
+</div>
+</div1
+</div>`;
+    $('#news-list').empty();
+    $('#news-list').append(newsHTML);
+  });
+}
+
+//-------------------------------------------------------------------------------------
 function displayWHTML(arrwData) {
   $('#weather-info').append(arrwData);
 };
@@ -299,7 +354,7 @@ function getWeatherdata(data, x) {
 <h5 class="weatherText">${data.weather[0].main}</h5>
 <h5 class="WeatherTemp">${data.main.temp}'°C'</h5>
 </div>`;
-// <h6 class="weatherDate">${data.dt_txt}</h6>
+  // <h6 class="weatherDate">${data.dt_txt}</h6>
 };
 
 function getCondition(wcData) {
@@ -344,8 +399,8 @@ function getWeather() {
   });
 };
 // ----------------------------------------------------------------------------
-function initMap(){
-console.log('something');
+function initMap() {
+  console.log('something');
 }//
 function renderMap() {
   let mapCity = {

@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #E0A800;
 }
 
 .jumbotron {
@@ -46,11 +47,23 @@ body {
   /* opacity: 0.2; */
   color: white;
   text-align: center;
-  padding: 1%
+  padding: 1%;
+}
+
+#tagline {
+  font-size: 2rem;
+  font-family: 'Courgette', cursive;
+  color: whitesmoke;
 }
 
 #formBtn {
   color: rgb(255, 254, 254);
+  font-weight: bold;
+  border-color: gold;
+}
+
+#region-list {
+  border-color: gold;
 }
 
 .meetup_event {
@@ -65,9 +78,12 @@ body {
 
 /*  */
 
-.meetup_desciption,
-p {
+.meetup_desciption, p {
   display: none;
+}
+
+#cardP {
+  display: block;
 }
 
 .meetup_desciption,
@@ -125,6 +141,7 @@ p:nth-child(1) {
   /* padding: 20px; */
   flex-wrap: wrap;
   text-align: center;
+  background-color: whitesmoke;
 }
 
 .cityWeather {
@@ -137,7 +154,7 @@ p:nth-child(1) {
 }
 
 #map {
-  height: 350px;
+  height: 50vh;
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
@@ -177,15 +194,30 @@ p:nth-child(1) {
   font-weight: bold;
 }
 
+.panelHeader {
+  display: inline-flex;
+  font-weight: bold;
+}
+
+
 /*  */
 
-@media (min-width: 667px) {
+@media (max-width: 667px) {
   /*  */
-  body {
+  /* body {
     background-color: lightred;
-  }
+  } */
   .cityWeather {
     display: flex;
     flex-direction: column;
+  }
+  .meetup_event {
+    display: flex;
+    flex-direction: column;
+  }
+  .group1 {
+    max-width: 80vw;
+    justify-content: center;
+    align-items: center;
   }
 }
