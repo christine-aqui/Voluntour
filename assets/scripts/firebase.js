@@ -196,7 +196,7 @@
       <div class='hvr-underline-from-center'>
       <div class="media">
 <img class="mr-3 orgImage" src="${itineraryImage}" alt="Organization Logo">  <div class="media-body">
-    <a href="${fireLine}"><h5 class="mt-0">${fireOrg}</h5></a>
+    <a href="${fireLine}" target="_blank"><h5 class="mt-0">${fireOrg}</h5></a>
     <span><h5>Look at charitable tours in ${fireRegion}</h5>
     <h5>${fireType}</h5></span>
   </div>
