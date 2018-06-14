@@ -80,23 +80,11 @@
       </div>
     </section>
   </div>
-  <div id="map">
-
-  </div>
-  <div id="returnTrips" class="trips">
-
-  </div>
-
+  <div id="map"></div>
+  <div id="returnTrips" class="trips"></div>
   <div id="travel-advisory" class="currentAdvisory"></div>
- 
-    <div id="returnTrips" class="card"></div>
-
-  <div id="weather-info" class="weather">
-  </div>
-
-  <div id="news-list" class="news">
-
-  </div>
+  <div id="weather-info" class="weather"></div>
+  <div id="news-list" class="news"></div>
   <!-- <div id="meetup-events" class="">
   </div> -->
   <!-- Contact Us Div -->
@@ -109,10 +97,10 @@
           <div>
             <div>
               <label for="first-name">Full Name</label>
-              <input type="text" class="form-control" name="first_name" id="first-name" placeholder="First name" required>
+              <input type="text" class="form-control" name="first_name" id="first-name" placeholder="First name" minlength="2" required>
             </div>
             <div>
-              <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Last name" required>
+              <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Last name" minlength="2" required>
             </div>
           </div>
         </div>
@@ -122,7 +110,7 @@
         </div>
         <div>
           <label for="msg">Your message:</label>
-          <textarea name="user_message" class="form-control" id="msg" cols="50" rows="15"></textarea>
+          <textarea name="user_message" class="form-control" id="msg" cols="50" rows="15" minlength="20" required></textarea>
         </div>
         <div>
           <button type="button" class="btn btn-warning btn-block">

@@ -188,11 +188,13 @@ a:hover {
   margin: 0.5rem;
 }
 .wrong-input {
-  border-color: red;
+  /* border-color: red; */
+  border: red solid 3px;
 }
 
 .right-input {
-  border-color: green;
+  /* border-color: green; */
+  border: green solid 3px;
 }
 
 #mail:focus {
