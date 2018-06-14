@@ -168,9 +168,12 @@ p:nth-child(1) {
   font-weight: bold;
 }
 
-.panelHeader {
-  display: inline-flex;
-  font-weight: bold;
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 
@@ -185,15 +188,21 @@ p:nth-child(1) {
   margin: 0.5rem;
 }
 .wrong-input {
-  border-color: red;
+  /* border-color: red; */
+  border: red solid 3px;
 }
 
 .right-input {
-  border-color: green;
+  /* border-color: green; */
+  border: green solid 3px;
 }
 
 #mail:focus {
   outline: none;
+}
+
+#contact-form {
+  width: 70vw;
 }
 
 /*  */
@@ -211,5 +220,8 @@ p:nth-child(1) {
     max-width: 80vw;
     justify-content: center;
     align-items: center;
+  }
+  .media {
+    justify-content: center;
   }
 }

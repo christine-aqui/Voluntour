@@ -194,12 +194,11 @@
   function firebaseDisplay() {
     return `
       <div class='rTrip hvr-underline-from-center'>
-        <img class="orgImage" src="${itineraryImage}" alt="">
-        <div class="groupFire">
-        <a href="${fireLine}" target="_blank"><h5>${fireOrg}</h5></a>
-        <h5>Look at charitable tours in ${fireRegion}</h5>
-        <h5>${fireType}</h5>
-        </div>
-      </div>
+      <div class="media">
+<img class="mr-3 orgImage" src="${itineraryImage}" alt="Organization Logo">  <div class="media-body">
+    <a href="${fireLine}" target="_blank"><h5 class="mt-0">${fireOrg}</h5></a>
+    <span><h5>Look at charitable tours in ${fireRegion}</h5>
+    <h5>${fireType}</h5></span>
+  </div>
     `;
   };
