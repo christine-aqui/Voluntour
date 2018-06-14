@@ -193,7 +193,7 @@
   //
   function firebaseDisplay() {
     return `
-      <div class='hvr-underline-from-center'>
+      <div class='rTrip hvr-underline-from-center'>
       <div class="media">
 <img class="mr-3 orgImage" src="${itineraryImage}" alt="Organization Logo">  <div class="media-body">
     <a href="${fireLine}" target="_blank"><h5 class="mt-0">${fireOrg}</h5></a>
