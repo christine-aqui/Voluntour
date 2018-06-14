@@ -46,7 +46,7 @@ body {
   /* opacity: 0.2; */
   color: white;
   text-align: center;
-  padding: 1%
+  padding: 1%;
 }
 
 #formBtn {
@@ -179,13 +179,22 @@ p:nth-child(1) {
 
 /*  */
 
-@media (min-width: 667px) {
+@media (max-width: 667px) {
   /*  */
-  body {
+  /* body {
     background-color: lightred;
-  }
+  } */
   .cityWeather {
     display: flex;
     flex-direction: column;
+  }
+  .meetup_event {
+    display: flex;
+    flex-direction: column;
+  }
+  .group1 {
+    max-width: 80vw;
+    justify-content: center;
+    align-items: center;
   }
 }
