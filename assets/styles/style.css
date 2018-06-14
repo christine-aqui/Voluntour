@@ -168,9 +168,12 @@ p:nth-child(1) {
   font-weight: bold;
 }
 
-.panelHeader {
-  display: inline-flex;
-  font-weight: bold;
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 
@@ -196,6 +199,10 @@ p:nth-child(1) {
   outline: none;
 }
 
+#contact-form {
+  width: 70vw;
+}
+
 /*  */
 
 @media (max-width: 667px) {
@@ -211,5 +218,8 @@ p:nth-child(1) {
     max-width: 80vw;
     justify-content: center;
     align-items: center;
+  }
+  .media {
+    justify-content: center;
   }
 }
