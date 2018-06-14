@@ -71,6 +71,7 @@ $(document).ready(function () {
       $('.container').show();
       $('#map').addClass('inactive');
       $('#returnTrips').addClass('inactive');
+      $('#contact-form').addClass('inactive');
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
@@ -79,6 +80,7 @@ $(document).ready(function () {
         $(".meetup_event").remove();
         $(".zeorMeets").remove();
         $(".rTrip").remove();
+        $('#contact-form').remove();
         //
         //
         userSelected = $('#region-list').val();
