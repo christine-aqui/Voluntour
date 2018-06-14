@@ -78,7 +78,8 @@ body {
 
 /*  */
 
-.meetup_desciption, p {
+.meetup_desciption,
+p {
   display: none;
 }
 
@@ -199,6 +200,17 @@ p:nth-child(1) {
   font-weight: bold;
 }
 
+.wrong-input {
+  border-color: red;
+}
+
+.right-input {
+  border-color: green;
+}
+
+#mail:focus {
+  outline: none;
+}
 
 /*  */
 

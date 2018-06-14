@@ -80,7 +80,7 @@ $(document).ready(function () {
         $(".meetup_event").remove();
         $(".zeorMeets").remove();
         $(".rTrip").remove();
-        $('#contact-form').remove();
+        // $('#contact-form').remove();
         //
         //
         userSelected = $('#region-list').val();
@@ -105,6 +105,24 @@ $(document).ready(function () {
         renderMap();
         getAdvisory();
         getNews();
+        //
+        //
+        $('#mail').ready(function () {
+          function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+          };
+          $('#mail').on('click', () => {
+            $('#mail').addClass('wrong-input')
+          });
+          $('#mail').change(() => {
+            var email = $('#mail').val()
+            if (validateEmail(email)) {
+              $('#mail').addClass('right-input');
+            }
+          })
+        });
+        //
       });
     }, 400);
   }, 500);
@@ -129,67 +147,67 @@ function uSelected(uSel) {
       // console.log(itineraryData);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Jordan":
       cityInfo(jordan);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Nepal":
       cityInfo(nepal);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Fiji":
       cityInfo(fiji);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Hawaii":
       cityInfo(hawaii);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Peru":
       cityInfo(peru);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Cambodia":
       cityInfo(cambodia);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "India":
       cityInfo(india);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Thailand":
       cityInfo(thailand);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Ecuador":
       cityInfo(ecuador);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Kenya":
       cityInfo(kenya);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Senegal":
       cityInfo(senegal);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Philippines":
       cityInfo(philippines);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
   }
 };
 // -----------------------------------------------------------------------------
@@ -403,7 +421,7 @@ function getWeather() {
 // ----------------------------------------------------------------------------
 function initMap() {
   console.log('something');
-}//
+} //
 function renderMap() {
   let mapCity = {
     lat: cityLat,
@@ -421,4 +439,4 @@ function renderMap() {
     map: map
   });
 };
-//
+//----------------------------------------------------------------------------
