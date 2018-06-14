@@ -81,47 +81,58 @@
     </section>
   </div>
 
+  <!-- Responsive Container -->
+  <div class="container-fluid">
 
-  <div id="map"></div>
-  <div id="returnTrips" class=""></div>
-  <!-- News Div -->
-  <div id="news-list" class=""></div>
-  <!-- Travel Advisory Div  -->
-  <div id="travel-advisory" class=""></div>
-  <!--Weather Info Div  -->
-  <div id="weather-info" class=""></div>
-  <!--Meetups Div  -->
-  <div id="meetup-events" class=""></div>
-  <!-- Contact Us Div -->
-  <div id="contact-form" class="">
-    <h2>Contact Us</h2>
-    <h3>How can we help you?</h3>
-    <form action="" method="POST">
-      <div>
+    <!-- News and Travel Row -->
+    <div class="row">
+      <div class="col-sm card">
+        <!-- News Div -->
+        <div id="news-list" class=""></div>
+        <!-- Travel Advisory Div  -->
+        <div id="travel-advisory" class=""></div>
+      </div>
+    </div>
+
+    <div id="map"></div>
+    <div id="returnTrips" class=""></div>
+
+    <!--Weather Info Div  -->
+    <div id="weather-info" class=""></div>
+    <!--Meetups Div  -->
+    <div id="meetup-events" class=""></div>
+    <!-- Contact Us Div -->
+    <div id="contact-form" class="">
+      <h2>Contact Us</h2>
+      <h3>How can we help you?</h3>
+      <form action="" method="POST">
         <div>
           <div>
-            <label for="first-name">Full Name</label>
-            <input type="text" class="form-control" name="first_name" id="first-name" placeholder="First name" required>
-          </div>
-          <div>
-            <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Last name" required>
+            <div>
+              <label for="first-name">Full Name</label>
+              <input type="text" class="form-control" name="first_name" id="first-name" placeholder="First name" required>
+            </div>
+            <div>
+              <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Last name" required>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <label for="mail">Email:</label>
-        <input type="email" class="form-control" name="user-mail" id="mail" placeholder="e.g. contact@example.com">
-      </div>
-      <div>
-        <label for="msg">Your message:</label>
-        <textarea name="user_message" class="form-control" id="msg" cols="50" rows="15"></textarea>
-      </div>
-      <div>
-          <button type="button" class="btn btn-warning btn-block"><span id="contact-submit">Submit</span></button>
-      </div>
-    </form>
+        <div>
+          <label for="mail">Email:</label>
+          <input type="email" class="form-control" name="user-mail" id="mail" placeholder="e.g. contact@example.com">
+        </div>
+        <div>
+          <label for="msg">Your message:</label>
+          <textarea name="user_message" class="form-control" id="msg" cols="50" rows="15"></textarea>
+        </div>
+        <div>
+          <button type="button" class="btn btn-warning btn-block">
+            <span id="contact-submit">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-
   <!-- Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
