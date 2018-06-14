@@ -172,7 +172,7 @@
           break;
           //
       }
-      $('#returetrips').append(firebaseDisplay());
+      $('#returnTrips').append(firebaseDisplay());
     });
     // return fireOrg , fireRegion, fireType;
   };
