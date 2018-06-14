@@ -47,10 +47,11 @@ let advisoryGeneral = '';
 let advisoryHealth = '';
 let advisoryHTML = `
 <div id="advisory-body">
-<h5 class="advisory-titles">General Travel Advisory</h5>
-<div id="general advisory"><p></p></div>
-<h5 class="advisory-titles">Health Advisory</h5>
-<div id="health advisory"><p></p>/div>
+<div class="media">
+<img class="mr-3" src="assets/images/warning.png" alt="Warning Sign">  <div class="media-body">
+    <h5 class="mt-0">Travel Advisory</h5>
+    <span></span>
+  </div>
 </div>
 `;
 let newsHTML = '';
@@ -71,6 +72,7 @@ $(document).ready(function () {
       $('.container').show();
       $('#map').addClass('inactive');
       $('#returnTrips').addClass('inactive');
+      $('#contact-form').addClass('inactive');
       //
       document.querySelector('#formBtn').addEventListener('click', function (e) {
         e.preventDefault();
@@ -79,6 +81,7 @@ $(document).ready(function () {
         $(".meetup_event").remove();
         $(".zeorMeets").remove();
         $(".rTrip").remove();
+        // $('#contact-form').remove();
         //
         //
         userSelected = $('#region-list').val();
@@ -103,6 +106,24 @@ $(document).ready(function () {
         renderMap();
         getAdvisory();
         getNews();
+        //
+        //
+        $('#mail').ready(function () {
+          function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+          };
+          $('#mail').on('click', () => {
+            $('#mail').addClass('wrong-input')
+          });
+          $('#mail').change(() => {
+            var email = $('#mail').val()
+            if (validateEmail(email)) {
+              $('#mail').addClass('right-input');
+            }
+          })
+        });
+        //
       });
     }, 400);
   }, 500);
@@ -127,67 +148,67 @@ function uSelected(uSel) {
       // console.log(itineraryData);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Jordan":
       cityInfo(jordan);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Nepal":
       cityInfo(nepal);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Fiji":
       cityInfo(fiji);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Hawaii":
       cityInfo(hawaii);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Peru":
       cityInfo(peru);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Cambodia":
       cityInfo(cambodia);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "India":
       cityInfo(india);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Thailand":
       cityInfo(thailand);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Ecuador":
       cityInfo(ecuador);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Kenya":
       cityInfo(kenya);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Senegal":
       cityInfo(senegal);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
     case "Philippines":
       cityInfo(philippines);
       // console.log('City name: ', capCity);
       break;
-    //
+      //
   }
 };
 // -----------------------------------------------------------------------------
@@ -270,10 +291,14 @@ function getAdvisory() {
     let advisoryHealth = advisoryResponse.health.description;
     console.log(advisoryGeneral);
     let advisoryHTML = `
-<div id="advisory-body">
-<h5 class="advisory-titles">General Travel Advisory</h5>
-<div id="general advisory"><p>${advisoryGeneral}</p></div>
-</div>`;
+    <div id="advisory-body">
+    <h4>Canadian Travel Advisory for ${userSelected}</h4>
+    <div class="media border border-danger">
+    <img class="mr-3" src="assets/images/warning.png" alt="Warning Sign">  <div class="media-body">
+        <h5 class="mt-0">Travel Advisory</h5>
+        <span>${advisoryGeneral}</span>
+      </div>
+    </div>`;
     $('#travel-advisory').empty();
     $('#travel-advisory').append(advisoryHTML);
     console.log(advisoryHealth);
@@ -304,38 +329,29 @@ function getNews() {
     let newsTitle2 = newsResponse.articles[2].title;
     let newsURL2 = newsResponse.articles[2].url;
     let newsHTML = `
-    <div class="row">
-    <div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${newsImage0}" alt="News Image">
-  <div class="card-body">
-    <h5 class="card-title">${newsSource0}</h5>
-    <p class="card-text">${newsTitle0}</p>
-    <a href="${newsURL0}" class="btn btn-warning" target="_blank">Read this article</a>
+    <h4>Here are some news reports from ${userSelected}</h4>
+    <div class="media border border-warning">
+  <img class="mr-3" id="news-image"src="${newsImage0}" alt="News Image">
+  <div class="media-body">
+    <h5 class="mt-0">${newsSource0}</h5>
+    <a href="${newsURL0}"><span>${newsTitle0}</span></a>
   </div>
 </div>
-</div>
-<div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${newsImage1}" alt="News Image">
-  <div class="card-body">
-    <h5 class="card-title">${newsSource1}</h5>
-    <p class="card-text">${newsTitle1}</p>
-    <a href="${newsURL1}" class="btn btn-warning" target="_blank">Read this article</a>
-  </div>
+<div class="media border border-warning">
+<img class="mr-3" id="news-image"src="${newsImage1}" alt="News Image">
+<div class="media-body">
+  <h5 class="mt-0">${newsSource1}</h5>
+  <a href="${newsURL1}"><span>${newsTitle1}</span></a>
 </div>
 </div>
-<div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${newsImage2}" alt="News Image">
-  <div class="card-body">
-    <h5 class="card-title">${newsSource2}</h5>
-    <p class="card-text">${newsTitle2}</p>
-    <a href="${newsURL2}" class="btn btn-warning" target="_blank">Read this article</a>
-  </div>
+<div class="media border border-warning">
+<img class="mr-3" id="news-image"src="${newsImage2}" alt="News Image">
+<div class="media-body">
+  <h5 class="mt-0">${newsSource2}</h5>
+  <a href="${newsURL2}"><span>${newsTitle2}</span></a>
 </div>
-</div1
-</div>`;
+</div>
+`;
     $('#news-list').empty();
     $('#news-list').append(newsHTML);
   });
@@ -401,7 +417,7 @@ function getWeather() {
 // ----------------------------------------------------------------------------
 function initMap() {
   console.log('something');
-}//
+} //
 function renderMap() {
   let mapCity = {
     lat: cityLat,
@@ -419,4 +435,4 @@ function renderMap() {
     map: map
   });
 };
-//
+//----------------------------------------------------------------------------
