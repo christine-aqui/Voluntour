@@ -1,6 +1,6 @@
 # Voluntour
 
-<img src="/volunteer.gif" width="400" height="300" />
+<img src="/volunteer.gif"/>
 
 ## Overview
 
